@@ -1,7 +1,6 @@
 {
   lib,
   buildFHSEnvChroot,
-  freetype,
   xkeyboard_config,
   callPackage,
 }: let

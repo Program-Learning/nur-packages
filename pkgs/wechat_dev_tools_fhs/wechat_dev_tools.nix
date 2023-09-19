@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
   '';
 
   # libraries = [ libdrm nspr alsaLib ];
-  libraries = [
+  libraries = with pkgs; [
     alsa-lib
     at-spi2-atk
     at-spi2-core
