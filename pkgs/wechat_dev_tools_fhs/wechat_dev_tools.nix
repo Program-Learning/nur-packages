@@ -33,52 +33,52 @@ stdenv.mkDerivation rec {
     _package-ide
   '';
 
-  # libraries = [ libdrm nspr alsaLib ];
-  libraries = with pkgs; [
-    alsa-lib
-    at-spi2-atk
-    at-spi2-core
-    cairo
-    cups
-    dbus
-    e2fsprogs
-    gdk-pixbuf
-    glib
-    gnutls
-    graphite2
-    gtk2
-    krb5
-    libdrm
-    libgcrypt
-    libGLU
-    libpulseaudio
-    libthai
-    libxkbcommon
-    mesa_drivers
-    nspr
-    nss
-    openldap
-    rtmpdump
-    udev
-    util-linux
-    xorg.libICE
-    xorg.libSM
-    xorg.libX11
-    xorg.libxcb
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXi
-    xorg.libXinerama
-    xorg.libXmu
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXScrnSaver
-    xorg.libXt
-    xorg.libXtst
-  ];
+  libraries = [ libdrm nspr alsa-lib ];
+  # libraries = with pkgs; [
+  #   alsa-lib
+  #   at-spi2-atk
+  #   at-spi2-core
+  #   cairo
+  #   cups
+  #   dbus
+  #   e2fsprogs
+  #   gdk-pixbuf
+  #   glib
+  #   gnutls
+  #   graphite2
+  #   gtk2
+  #   krb5
+  #   libdrm
+  #   libgcrypt
+  #   libGLU
+  #   libpulseaudio
+  #   libthai
+  #   libxkbcommon
+  #   mesa_drivers
+  #   nspr
+  #   nss
+  #   openldap
+  #   rtmpdump
+  #   udev
+  #   util-linux
+  #   xorg.libICE
+  #   xorg.libSM
+  #   xorg.libX11
+  #   xorg.libxcb
+  #   xorg.libXcomposite
+  #   xorg.libXcursor
+  #   xorg.libXdamage
+  #   xorg.libXext
+  #   xorg.libXfixes
+  #   xorg.libXi
+  #   xorg.libXinerama
+  #   xorg.libXmu
+  #   xorg.libXrandr
+  #   xorg.libXrender
+  #   xorg.libXScrnSaver
+  #   xorg.libXt
+  #   xorg.libXtst
+  # ];
 
   buildInputs = libraries;
 
