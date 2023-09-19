@@ -35,6 +35,7 @@ stdenv.mkDerivation rec {
 
   libraries = with pkgs; [
     glibc
+    curl
     nss
     libdrm
     nspr
