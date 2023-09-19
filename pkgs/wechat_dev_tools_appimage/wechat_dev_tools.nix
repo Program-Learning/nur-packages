@@ -37,9 +37,9 @@ stdenv.mkDerivation rec {
   # ];
 
   preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
+    makeWrapper ${appimage-run}/bin/appimage-run ${out}/bin/wechat_dev_tools \
       --argv0 "wechat_dev_tools" \
-      --add-flags "$out/Appimage/wechat_dev_tools.AppImage"
+      --add-flags "${out}/Appimage/wechat_dev_tools.AppImage"
   '';
 
   # wechat_dev_tools-desktop =
@@ -64,7 +64,7 @@ stdenv.mkDerivation rec {
   desktopItems = lib.toList (makeDesktopItem {
     name = "Wechat Dev Tools";
     genericName = "The development tools for wechat projects";
-    exec = "${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools";
+    exec = "${appimage-run}/bin/appimage-run ${out}/bin/wechat_dev_tools";
     icon = "wechat-devtools";
     comment = "The development tools for wechat projects";
     mimeTypes = [ "x-scheme-handler/wechatide" ];
