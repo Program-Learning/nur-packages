@@ -63,7 +63,6 @@ stdenv.mkDerivation rec {
 
   desktopItems = lib.toList (makeDesktopItem {
     name = "Wechat Dev Tools";
-    desktopName = "Wechat Dev Tools";
     genericName = "The development tools for wechat projects";
     exec = "${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools";
     icon = "wechat-devtools";
