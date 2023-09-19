@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
       mv usr/share/* $out/share/
 
       substituteInPlace $out/share/applications/io.github.msojocs.wechat-devtools-linux.desktop  \
-        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux" "$out/share/wechat_devtools" 
+        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux" "$out/share/wechat_devtools/io.github.msojocs.wechat-devtools-linux" 
     }
     _package-ide
   '';
@@ -47,18 +47,13 @@ stdenv.mkDerivation rec {
 
   buildInputs = with pkgs; libraries;
 
-  #   runtimeLibs = pkgs.lib.makeLibraryPath [
-  #   pkgs.libudev0-shim
-  #   pkgs.glibc
-  #   pkgs.libsecret
-  #   pkgs.nss
-  # ];
+  runtimeLibs = pkgs.lib.makeLibraryPath libraries;
 
-  # preFixup = ''
-  #   makeWrapper $out/share/feishu/feishu $out/bin/feishu \
-  #     --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
-  #     "''${gappsWrapperArgs[@]}"
-  # '';
+  preFixup = ''
+    makeWrapper $out/share/wechat_devtools/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools $out/bin/wechat-devtools \
+      --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
+      "''${gappsWrapperArgs[@]}"
+  '';
 
   meta = with lib; {
     description = "Wechat Dev Tools";
