@@ -37,9 +37,9 @@ stdenv.mkDerivation rec {
   # ];
 
   preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run ${out}/bin/wechat_dev_tools \
+    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
       --argv0 "wechat_dev_tools" \
-      --add-flags "${out}/Appimage/wechat_dev_tools.AppImage"
+      --add-flags "$out/Appimage/wechat_dev_tools.AppImage"
   '';
 
   # wechat_dev_tools-desktop =
