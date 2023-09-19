@@ -50,14 +50,14 @@ stdenv.mkDerivation rec {
       Comment=The development tools for wechat projects
       Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
       Categories=Development;WebDevelopment;IDE;
-      Exec=appimage-run ${out}/Appimage/${src} 
+      Exec=appimage-run $out/Appimage/$src
       Icon=wechat-devtools
       Type=Application
       Terminal=false
       StartupWMClass=wechat_devtools
       Actions=
       MimeType=x-scheme-handler/wechatide
-      X-AppImage-Version=v${version}
+      X-AppImage-Version=v$version
 
     '';
   meta = with lib; {
