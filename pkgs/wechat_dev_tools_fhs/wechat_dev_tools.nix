@@ -41,6 +41,7 @@ stdenv.mkDerivation rec {
     alsaLib
     xorg.libxkbfile
     krb5
+    mesa
     xorg.libxshmfence
   ];
 
