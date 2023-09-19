@@ -60,11 +60,10 @@ stdenv.mkDerivation rec {
   #     X-AppImage-Version=v$version
 
   #   '';
-  command = "${appimage-run}/bin/appimage-run ${out}/bin/wechat_dev_tools";
   desktopItems = lib.toList (makeDesktopItem {
     name = "Wechat Dev Tools";
     genericName = "The development tools for wechat projects";
-    exec = command;
+    exec = "wechat_dev_tools";
     icon = "wechat-devtools";
     comment = "The development tools for wechat projects";
     mimeTypes = [ "x-scheme-handler/wechatide" ];
