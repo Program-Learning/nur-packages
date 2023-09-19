@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
     _package-ide
   '';
 
-  libraries = [ libdrm nspr alsa-lib ];
+  libraries = with pkgs; [ libdrm nspr alsa-lib ];
   # libraries = with pkgs; [
   #   alsa-lib
   #   at-spi2-atk
