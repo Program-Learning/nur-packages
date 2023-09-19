@@ -1,4 +1,4 @@
-{ fetchurl, lib, stdenv, pkgs, }:
+{ fetchurl, lib, stdenv, pkgs, appimage-run, }:
 stdenv.mkDerivation rec {
   pname = "wechat_dev_tools";
   version = "1.06.2307260-1";
