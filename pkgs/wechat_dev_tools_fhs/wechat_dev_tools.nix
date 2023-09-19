@@ -43,7 +43,7 @@ stdenv.mkDerivation rec {
     krb5
     mesa
     xorg.libxshmfence
-  ];3
+  ];
 
   buildInputs = with pkgs; libraries;
 

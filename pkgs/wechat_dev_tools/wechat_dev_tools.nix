@@ -43,7 +43,7 @@ stdenv.mkDerivation rec {
   # '';
 
   wechat_dev_tools-desktop =
-    super.writeTextDir "share/applications/wechat_dev_tools-desktop.desktop" ''
+    pkgs.writeText "share/applications/wechat_dev_tools-desktop.desktop" ''
       [Desktop Entry]
       Name=WeChat Dev Tools
       Name[zh_CN]=微信开发者工具
