@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  unpackPhase = "";
+  unpackPhase = "echo";
 
   installPhase = ''
     _package-ide() {
