@@ -13,6 +13,8 @@ stdenv.mkDerivation rec {
   };
   sourceRoot = ".";
 
+  unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
+
   installPhase = ''
     _package-ide() {
       mkdir -p $out/{bin,share/wechat_devtools,lib}
