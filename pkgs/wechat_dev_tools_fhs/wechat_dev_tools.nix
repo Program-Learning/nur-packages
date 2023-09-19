@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
       mv usr/share/* $out/share/
 
       substituteInPlace $out/share/applications/io.github.msojocs.wechat-devtools-linux.desktop  \
-        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux" "$out/share/wechat_devtools/io.github.msojocs.wechat-devtools-linux" 
+        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools" "$out/bin/wechat-devtools" 
     }
     _package-ide
   '';
@@ -43,7 +43,7 @@ stdenv.mkDerivation rec {
     krb5
     mesa
     xorg.libxshmfence
-  ];
+  ];3
 
   buildInputs = with pkgs; libraries;
 
