@@ -16,6 +16,7 @@
 
   # example-package = pkgs.callPackage ./pkgs/example-package { };
   wechat_dev_tools = pkgs.callPackage ./pkgs/wechat_dev_tools { };
+  wechat_dev_tools_fhs = pkgs.callPackage ./pkgs/wechat_dev_tools_fhs { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
