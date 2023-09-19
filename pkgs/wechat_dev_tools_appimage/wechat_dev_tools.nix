@@ -39,7 +39,7 @@ stdenv.mkDerivation rec {
   preFixup = ''
     makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
       --argv0 "wechat_dev_tools" \
-      --add-flags "$out/Appimage/wechat_dev_tools.AppImag"
+      --add-flags "$out/Appimage/wechat_dev_tools.AppImage"
   '';
 
   wechat_dev_tools-desktop =
@@ -50,7 +50,7 @@ stdenv.mkDerivation rec {
       Comment=The development tools for wechat projects
       Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
       Categories=Development;WebDevelopment;IDE;
-      Exec=appimage-run $out/Appimage/$src
+      Exec=${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools
       Icon=wechat-devtools
       Type=Application
       Terminal=false
