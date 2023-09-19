@@ -33,7 +33,16 @@ stdenv.mkDerivation rec {
     _package-ide
   '';
 
-  libraries = with pkgs;[ glibc nss libdrm nspr alsaLib ];
+  libraries = with pkgs; [
+    glibc
+    nss
+    libdrm
+    nspr
+    alsaLib
+    xorg.libxkbfile
+    krb5
+    xorg.libxshmfence
+  ];
 
   buildInputs = with pkgs; libraries;
 
