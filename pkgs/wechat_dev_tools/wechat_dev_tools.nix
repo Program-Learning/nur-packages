@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     _package-ide() {
       mkdir -p $out/Appimage
-      mv $src $out/Appimage
+      cp $src $out/Appimage
     }
     _package-ide
   '';
