@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/WeChat_Dev_Tools_v${version}_x86_64_linux.AppImage";
-    sha256 = "sha256-lwjGqUBNmJRhF+mEI2Skd5tOPWkvzP3gOwJGr8m/LBw=";
+    sha256 = "sha256-rCDmoDEJlSKIJ8mECGGqMopgC4yAXnhv3ntc/KPULGU=";
   };
   sourceRoot = ".";
 
