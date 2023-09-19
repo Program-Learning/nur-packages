@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url =
-      "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/io.github.msojocs.wechat-devtools-linux_${version}_amd64.deb";
+      "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/WeChat_Dev_Tools_v${version}_x86_64_linux.AppImage";
     sha256 = "sha256-lwjGqUBNmJRhF+mEI2Skd5tOPWkvzP3gOwJGr8m/LBw=";
   };
   sourceRoot = ".";
@@ -17,25 +17,17 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  unpackPhase =
-    "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
+  unpackPhase = "";
 
   installPhase = ''
     _package-ide() {
-      mkdir -p $out/{bin,share/wechat_devtools,lib}
-
-      mv opt/apps/io.github.msojocs.wechat-devtools-linux $out/share/wechat_devtools
-      mv usr/share/* $out/share/
-
-      substituteInPlace $out/share/applications/io.github.msojocs.wechat-devtools-linux.desktop  \
-        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux" "$out/share/wechat_devtools" 
+      mkdir -p $out/Appimage
+      mv $src $out/Appimage
     }
     _package-ide
   '';
 
-  libraries = [ libdrm nspr alsaLib ];
-
-  buildInputs = libraries;
+  buildInputs = with pkgs; [ ];
 
   #   runtimeLibs = pkgs.lib.makeLibraryPath [
   #   pkgs.libudev0-shim
@@ -50,6 +42,24 @@ stdenv.mkDerivation rec {
   #     "''${gappsWrapperArgs[@]}"
   # '';
 
+  wechat_dev_tools-desktop =
+    super.writeTextDir "share/applications/wechat_dev_tools-desktop.desktop" ''
+      [Desktop Entry]
+      Name=WeChat Dev Tools
+      Name[zh_CN]=微信开发者工具
+      Comment=The development tools for wechat projects
+      Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
+      Categories=Development;WebDevelopment;IDE;
+      Exec=appimage-run ${out}/Appimage/${src} 
+      Icon=wechat-devtools
+      Type=Application
+      Terminal=false
+      StartupWMClass=wechat_devtools
+      Actions=
+      MimeType=x-scheme-handler/wechatide
+      X-AppImage-Version=v${version}
+
+    '';
   meta = with lib; {
     description = "Wechat Dev Tools";
     homepage = "https://github.com/msojocs/wechat-web-devtools-linux";
