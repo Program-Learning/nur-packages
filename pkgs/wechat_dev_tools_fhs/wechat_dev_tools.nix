@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
     _package-ide
   '';
 
-  libraries = with pkgs;[ libdrm nspr alsaLib ];
+  libraries = with pkgs;[ glibc nss libdrm nspr alsaLib ];
 
   buildInputs = with pkgs; libraries;
 
