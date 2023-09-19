@@ -2,6 +2,7 @@
   fetchurl,
   lib,
   stdenv,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "wechat_dev_tools";
@@ -19,7 +20,7 @@ stdenv.mkDerivation rec {
     makeWrapper
     dpkg
   ];
-  
+
   unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
 
   installPhase = ''
