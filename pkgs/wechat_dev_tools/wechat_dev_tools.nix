@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     _package-ide() {
       mkdir -p $out/Appimage
-      cp $src $out/Appimage
+      ln -s $src $out/Appimage/wechat_dev_tools.AppImage
     }
     _package-ide
   '';
@@ -36,11 +36,11 @@ stdenv.mkDerivation rec {
   #   pkgs.nss
   # ];
 
-  # preFixup = ''
-  #   makeWrapper $out/share/feishu/feishu $out/bin/feishu \
-  #     --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
-  #     "''${gappsWrapperArgs[@]}"
-  # '';
+  preFixup = ''
+    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
+      --argv0 "wechat_dev_tools" \
+      --add-flags "$out/Appimage/wechat_dev_tools.AppImag"
+  '';
 
   wechat_dev_tools-desktop =
     pkgs.writeText "share/applications/wechat_dev_tools-desktop.desktop" ''
