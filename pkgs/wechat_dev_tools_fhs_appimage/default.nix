@@ -1,5 +1,5 @@
 { lib, buildFHSEnvChroot, xkeyboard_config, callPackage, }:
-let wechat_dev_tools = callPackage ./wechat_dev_tools.nix { };
+let wechat_dev_tools = callPackage ./wechat_dev_tools_appimage.nix { };
 in buildFHSEnvChroot {
   name = "wechat_dev_tools-env";
   targetPkgs = pkgs:

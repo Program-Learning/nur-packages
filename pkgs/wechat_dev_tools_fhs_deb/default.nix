@@ -5,7 +5,7 @@
   xkeyboard_config,
   callPackage,
 }: let
-  wechat_dev_tools = callPackage ./wechat_dev_tools.nix {};
+  wechat_dev_tools = callPackage ./wechat_dev_tools_deb.nix {};
 in
   buildFHSEnvChroot {
     name = "wechat_dev_tools-env";
