@@ -15,8 +15,14 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   # example-package = pkgs.callPackage ./pkgs/example-package { };
-  wechat_dev_tools_appimage = pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
-  wechat_dev_tools_fhs = pkgs.callPackage ./pkgs/wechat_dev_tools_fhs { };
+  wechat_dev_tools_fhs_appimage =
+    pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_appimage { };
+  wechat_dev_tools_fhs_deb =
+    pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_deb { };
+  wechat_dev_tools_appimage =
+    pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
+  wechat_dev_tools_deb =
+    pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
