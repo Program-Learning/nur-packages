@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Photoshop_CS6.AppImage/Adobe_Photoshop_CS6.AppImage.7z";
-    sha256 = "sha256-rCDmoDEJlSKIJ8mECGGqMopgC4yAXnhv3ntc/KPULGU=";
+    sha256 = "sha256-U19wx0asTuu6o/AvUrp2AM1bywwJAfH5R7H4zdVPj+A=";
   };
   sourceRoot = ".";
 
