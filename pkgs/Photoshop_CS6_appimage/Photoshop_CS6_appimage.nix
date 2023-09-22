@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  unpackPhase = "7z x $src";
+  # unpackPhase = "7z x $src";
 
   installPhase = ''
     _install() {
@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
     _install
   '';
 
-  buildInputs = with pkgs; [ 7z ];
+  buildInputs = with pkgs; [  ];
 
   #   runtimeLibs = pkgs.lib.makeLibraryPath [
   #   pkgs.libudev0-shim
