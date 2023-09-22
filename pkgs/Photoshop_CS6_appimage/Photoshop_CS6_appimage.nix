@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
     _install
   '';
 
-  buildInputs = with pkgs; [ ];
+  buildInputs = with pkgs; [ 7z ];
 
   #   runtimeLibs = pkgs.lib.makeLibraryPath [
   #   pkgs.libudev0-shim
