@@ -19,6 +19,8 @@
     pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_appimage { };
   wechat_dev_tools_fhs_deb =
     pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_deb { };
+   Photoshop_CS6_appimage=
+    pkgs.callPackage ./pkgs/Photoshop_CS6_appimage { };
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
   wechat_dev_tools_deb =
