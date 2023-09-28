@@ -45,11 +45,11 @@ stdenv.mkDerivation rec {
   desktopItems = lib.toList (makeDesktopItem {
     name = "Adobe_Illustrator_CS6";
     genericName = "Adobe_Illustrator_CS6";
-    exec = "illustrator";
-    icon = "illustrator";
-    comment = "Adobe_Illustrator_CS6";
+    exec = "adobe_illustrator_cs6";
+    icon = "Adobe_Illustrator_CS6";
+    comment = "GameLinux";
     desktopName = "Adobe_Illustrator_CS6";
-    categories = [ "Development" ];
+    categories = [ "Graphics" "2DGraphics" ];
   });
   meta = with lib; {
     description = "Adobe_Illustrator_CS6";

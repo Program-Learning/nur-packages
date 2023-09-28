@@ -49,7 +49,7 @@ stdenv.mkDerivation rec {
     icon = "photoshop";
     comment = "Adobe_Photoshop_CS6";
     desktopName = "Adobe_Photoshop_CS6";
-    categories = [ "Development" ];
+    categories = [ "Graphics" "2DGraphics" ];
   });
   meta = with lib; {
     description = "Adobe_Photoshop_CS6";
