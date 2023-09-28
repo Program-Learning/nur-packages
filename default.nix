@@ -21,6 +21,8 @@
     pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_deb { };
   Adobe_Photoshop_CS6_appimage =
     pkgs.callPackage ./pkgs/Adobe_Photoshop_CS6_appimage { };
+  Adobe_Illustrator_CS6_appimage =
+    pkgs.callPackage ./pkgs/Adobe_Illustrator_CS6_appimage { };
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
   wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
