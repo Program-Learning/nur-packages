@@ -37,8 +37,8 @@ stdenv.mkDerivation rec {
   # ];
 
   preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/photoshop \
-      --argv0 "photoshop" \
+    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_photoshop_cs6 \
+      --argv0 "adobe_photoshop_cs6" \
       --add-flags "$out/Appimage/Adobe_Photoshop_CS6.AppImage"
   '';
 
