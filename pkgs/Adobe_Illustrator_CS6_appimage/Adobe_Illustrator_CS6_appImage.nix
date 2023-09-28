@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Illustrator_CS6.AppImage/Adobe_Illustrator_CS6.AppImage.7z";
-    sha256 = "sha256-U19wx0asTuu6o/AvUrp2AM1bywwJAfH5R7H4zdVPj+A=";
+    sha256 = "sha256-rbG4qa013jO0cGl3nIE5YarmWDfRVX7GmScMKuwAF9M=";
   };
   sourceRoot = ".";
 
