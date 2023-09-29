@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   icon = fetchurl {
     url =
       "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Illustrator_CS6.AppImage/Adobe_Illustrator_CS6.png";
-    sha256 = "sha256-KYmhtTAbjHua/a5Wlsak5SRq+i1PHz09rVwZLwNqm0w";
+    sha256 = "sha256-zKBp0EyYClUeAuJ79+VJrrBtPuKIoyNTIOpcbwZVLV0=";
   };
 
   buildInputs = with pkgs; [ p7zip ];
