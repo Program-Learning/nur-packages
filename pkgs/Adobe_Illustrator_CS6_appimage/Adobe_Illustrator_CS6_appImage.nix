@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
     runHook preInstall
     _install() {
       mkdir -p $out/{bin,lib/Adobe_Illustrator_CS6}
-      ln -s Adobe_Illustrator_CS6.AppImage $out/lib/Adobe_Illustrator_CS6/Adobe_Illustrator_CS6.AppImage
+      mv Adobe_Illustrator_CS6.AppImage $out/lib/Adobe_Illustrator_CS6/
       install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Illustrator_CS6.png
       makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_illustrator_cs6 \
       --argv0 "adobe_illustrator_cs6" \
