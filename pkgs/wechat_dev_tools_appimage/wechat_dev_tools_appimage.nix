@@ -8,69 +8,47 @@ stdenv.mkDerivation rec {
       "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/WeChat_Dev_Tools_v${version}_x86_64_linux.AppImage";
     sha256 = "sha256-rCDmoDEJlSKIJ8mECGGqMopgC4yAXnhv3ntc/KPULGU=";
   };
-  sourceRoot = ".";
 
-  nativeBuildInputs = with pkgs; [
-    wrapGAppsHook
-    autoPatchelfHook
-    makeWrapper
-    dpkg
-  ];
+  dontUnpack = true;
 
-  unpackPhase = "echo";
-
-  installPhase = ''
-    _package-ide() {
-      mkdir -p $out/Appimage
-      ln -s $src $out/Appimage/wechat_dev_tools.AppImage
-    }
-    _package-ide
-  '';
+  icon = fetchurl {
+    url =
+      "https://github.com/Program-Learning/nur-packages/releases/download/v1.06.2307260-1_wechat_dev_tool_appimage/wechat-devtools.png";
+    sha256 = "sha256-KYmhtTAbjHua/a5Wlsak5SRq+i1PHz09rVwZLwNqm0w";
+  };
 
   buildInputs = with pkgs; [ ];
+  nativeBuildInputs = with pkgs; [
+    makeWrapper
+    copyDesktopItems
+  ];
 
-  #   runtimeLibs = pkgs.lib.makeLibraryPath [
-  #   pkgs.libudev0-shim
-  #   pkgs.glibc
-  #   pkgs.libsecret
-  #   pkgs.nss
-  # ];
-
-  preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
+  installPhase = ''
+    runHook preInstall
+    _install() {
+      mkdir -p $out/{bin,lib/wechat_dev_tools}
+      ln -s $src $out/lib/wechat_dev_tools/wechat_dev_tools.AppImage
+      install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/wechat_dev_tools.png
+      makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
       --argv0 "wechat_dev_tools" \
-      --add-flags "$out/Appimage/wechat_dev_tools.AppImage"
+      --add-flags "$out/lib/wechat_dev_tools/wechat_dev_tools.AppImage"
+    }
+    _install
+    runHook postInstall
   '';
 
-  # wechat_dev_tools-desktop =
-  #   pkgs.writeText "share/applications/wechat_dev_tools-desktop.desktop" ''
-  #     [Desktop Entry]
-  #     Name=WeChat Dev Tools
-  #     Name[zh_CN]=微信开发者工具
-  #     Comment=The development tools for wechat projects
-  #     Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
-  #     Categories=Development;WebDevelopment;IDE;
-  #     Exec=${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools
-  #     Icon=wechat-devtools
-  #     Type=Application
-  #     Terminal=false
-  #     StartupWMClass=wechat_devtools
-  #     Actions=
-  #     MimeType=x-scheme-handler/wechatide
-  #     X-AppImage-Version=v$version
-
-  #   '';
   desktopItems = lib.toList (makeDesktopItem {
     name = "Wechat Dev Tools";
     genericName = "The development tools for wechat projects";
     exec = "wechat_dev_tools";
-    icon = "wechat-devtools";
+    icon = "wechat_dev_tools";
     comment = "The development tools for wechat projects";
     mimeTypes = [ "x-scheme-handler/wechatide" ];
     desktopName = "Wechat Dev Tools";
     categories = [ "Development" "WebDevelopment" "IDE" ];
     startupWMClass = "wechat_devtools";
   });
+  
   meta = with lib; {
     description = "Wechat Dev Tools";
     homepage = "https://github.com/msojocs/wechat-web-devtools-linux";

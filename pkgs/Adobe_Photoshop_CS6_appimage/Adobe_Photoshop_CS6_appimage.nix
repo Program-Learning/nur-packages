@@ -8,45 +8,40 @@ stdenv.mkDerivation rec {
       "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Photoshop_CS6.AppImage/Adobe_Photoshop_CS6.AppImage.7z";
     sha256 = "sha256-U19wx0asTuu6o/AvUrp2AM1bywwJAfH5R7H4zdVPj+A=";
   };
-  sourceRoot = ".";
 
+  icon = fetchurl {
+    url =
+      "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Photoshop_CS6.AppImage/Adobe_Photoshop_CS6.png";
+    sha256 = "sha256-KYmhtTAbjHua/a5Wlsak5SRq+i1PHz09rVwZLwNqm0w";
+  };
+
+  buildInputs = with pkgs; [ p7zip ];
   nativeBuildInputs = with pkgs; [
-    wrapGAppsHook
-    autoPatchelfHook
     makeWrapper
-    dpkg
+    copyDesktopItems
   ];
 
   unpackPhase = "7z x $src";
 
   installPhase = ''
+    runHook preInstall
     _install() {
-      mkdir -p $out/Appimage
-      mv Adobe_Photoshop_CS6.AppImage $out/Appimage/
+      mkdir -p $out/{bin,lib/Adobe_Photoshop_CS6}
+      ln -s $src $out/lib/Adobe_Photoshop_CS6/Adobe_Photoshop_CS6.AppImage
+      install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Photoshop_CS6.png
+      makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_photoshop_cs6 \
+      --argv0 "adobe_photoshop_cs6" \
+      --add-flags "$out/lib/Adobe_Photoshop_CS6/Adobe_Photoshop_CS6.AppImage"
     }
     _install
-  '';
-
-  buildInputs = with pkgs; [ p7zip ];
-
-  #   runtimeLibs = pkgs.lib.makeLibraryPath [
-  #   pkgs.libudev0-shim
-  #   pkgs.glibc
-  #   pkgs.libsecret
-  #   pkgs.nss
-  # ];
-
-  preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_photoshop_cs6 \
-      --argv0 "adobe_photoshop_cs6" \
-      --add-flags "$out/Appimage/Adobe_Photoshop_CS6.AppImage"
+    runHook postInstall
   '';
 
   desktopItems = lib.toList (makeDesktopItem {
     name = "Adobe_Photoshop_CS6";
     genericName = "Adobe_Photoshop_CS6";
-    exec = "photoshop";
-    icon = "photoshop";
+    exec = "adobe_photoshop_cs6";
+    icon = "Adobe_Photoshop_CS6";
     comment = "Adobe_Photoshop_CS6";
     desktopName = "Adobe_Photoshop_CS6";
     categories = [ "Graphics" "2DGraphics" ];

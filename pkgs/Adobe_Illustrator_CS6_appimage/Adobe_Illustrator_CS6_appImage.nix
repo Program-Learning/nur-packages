@@ -8,38 +8,33 @@ stdenv.mkDerivation rec {
       "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Illustrator_CS6.AppImage/Adobe_Illustrator_CS6.AppImage.7z";
     sha256 = "sha256-rbG4qa013jO0cGl3nIE5YarmWDfRVX7GmScMKuwAF9M=";
   };
-  sourceRoot = ".";
 
+  icon = fetchurl {
+    url =
+      "https://github.com/Program-Learning/nur-packages/releases/download/Adobe_Illustrator_CS6.AppImage/Adobe_Illustrator_CS6.png";
+    sha256 = "sha256-KYmhtTAbjHua/a5Wlsak5SRq+i1PHz09rVwZLwNqm0w";
+  };
+
+  buildInputs = with pkgs; [ p7zip ];
   nativeBuildInputs = with pkgs; [
-    wrapGAppsHook
-    autoPatchelfHook
     makeWrapper
-    dpkg
+    copyDesktopItems
   ];
 
   unpackPhase = "7z x $src";
 
   installPhase = ''
+    runHook preInstall
     _install() {
-      mkdir -p $out/Appimage
-      mv Adobe_Illustrator_CS6.AppImage $out/Appimage/
+      mkdir -p $out/{bin,lib/Adobe_Illustrator_CS6}
+      ln -s $src $out/lib/Adobe_Illustrator_CS6/Adobe_Illustrator_CS6.AppImage
+      install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Illustrator_CS6.png
+      makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_illustrator_cs6 \
+      --argv0 "adobe_illustrator_cs6" \
+      --add-flags "$out/lib/Adobe_Illustrator_CS6/Adobe_Illustrator_CS6.AppImage"
     }
     _install
-  '';
-
-  buildInputs = with pkgs; [ p7zip ];
-
-  #   runtimeLibs = pkgs.lib.makeLibraryPath [
-  #   pkgs.libudev0-shim
-  #   pkgs.glibc
-  #   pkgs.libsecret
-  #   pkgs.nss
-  # ];
-
-  preFixup = ''
-    makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_illustrator_cs6 \
-      --argv0 "adobe_illustrator_cs6" \
-      --add-flags "$out/Appimage/Adobe_Illustrator_CS6.AppImage"
+    runHook postInstall
   '';
 
   desktopItems = lib.toList (makeDesktopItem {
