@@ -16,18 +16,17 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = with pkgs; [ p7zip ];
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = with pkgs; [ makeWrapper copyDesktopItems ];
 
-  unpackPhase = "7z x $src";
+  unpackPhase = ''
+    7z x $src
+  '';
 
   installPhase = ''
     runHook preInstall
     _install() {
       mkdir -p $out/{bin,lib/Adobe_Illustrator_CS6}
-      ln -s $src $out/lib/Adobe_Illustrator_CS6/Adobe_Illustrator_CS6.AppImage
+      ln -s Adobe_Illustrator_CS6.AppImage $out/lib/Adobe_Illustrator_CS6/Adobe_Illustrator_CS6.AppImage
       install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Illustrator_CS6.png
       makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_illustrator_cs6 \
       --argv0 "adobe_illustrator_cs6" \
