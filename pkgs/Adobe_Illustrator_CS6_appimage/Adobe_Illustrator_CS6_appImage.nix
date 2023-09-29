@@ -18,9 +18,7 @@ stdenv.mkDerivation rec {
   buildInputs = with pkgs; [ p7zip ];
   nativeBuildInputs = with pkgs; [ makeWrapper copyDesktopItems ];
 
-  unpackPhase = ''
-    7z x $src
-  '';
+  unpackPhase = "7z x $src";
 
   installPhase = ''
     runHook preInstall
