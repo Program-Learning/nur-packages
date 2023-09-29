@@ -23,14 +23,17 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
+    runHook preInstall
     _install() {
       mkdir -p $out/Appimage
       mv Adobe_Photoshop_CS6.AppImage $out/Appimage/
+      install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Photoshop_CS6.png
       makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_photoshop_cs6 \
       --argv0 "adobe_photoshop_cs6" \
       --add-flags "$out/Appimage/Adobe_Photoshop_CS6.AppImage"
     }
     _install
+    runHook postInstall
   '';
 
   desktopItems = lib.toList (makeDesktopItem {
