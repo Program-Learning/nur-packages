@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   icon = fetchurl {
     url =
       "https://github.com/Program-Learning/nur-packages/releases/download/v1.06.2307260-1_wechat_dev_tool_appimage/wechat-devtools.png";
-    sha256 = "sha256-KYmhtTAbjHua/a5Wlsak5SRq+i1PHz09rVwZLwNqm0w";
+    sha256 = "sha256-E1hGcnTtHN3tH/dYI/iN86osKzEV3fVATWquql2KbZQ=";
   };
 
   buildInputs = with pkgs; [ ];
