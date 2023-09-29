@@ -24,12 +24,11 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     _install() {
-      mkdir -p $out/{bin,lib/AppImage}
-      mv Adobe_Illustrator_CS6.AppImage $out/lib/AppImage/
-      install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/Adobe_Illustrator_CS6.png
+      mkdir -p $out/Appimage
+      mv Adobe_Illustrator_CS6.AppImage $out/Appimage/
       makeWrapper ${appimage-run}/bin/appimage-run $out/bin/adobe_illustrator_cs6 \
       --argv0 "adobe_illustrator_cs6" \
-      --add-flags "$out/lib/AppImage/Adobe_Illustrator_CS6.AppImage"
+      --add-flags "$out/Appimage/Adobe_Illustrator_CS6.AppImage"
     }
     _install
   '';
