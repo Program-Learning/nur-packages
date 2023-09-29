@@ -23,7 +23,6 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    runHook preInstall
     _install() {
       mkdir -p $out/{bin,lib/Adobe_Photoshop_CS6}
       mv Adobe_Photoshop_CS6.AppImage $out/lib/Adobe_Photoshop_CS6/
@@ -33,7 +32,6 @@ stdenv.mkDerivation rec {
       --add-flags "$out/lib/Adobe_Photoshop_CS6/Adobe_Photoshop_CS6.AppImage"
     }
     _install
-    runHook postInstall
   '';
 
   desktopItems = lib.toList (makeDesktopItem {
