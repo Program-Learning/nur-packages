@@ -1,12 +1,12 @@
 { fetchurl, lib, stdenv, pkgs, appimage-run, makeDesktopItem }:
 stdenv.mkDerivation rec {
   pname = "wechat_dev_tools";
-  version = "1.06.2307260-1";
+  version = "1.06.2308310-1";
 
   src = fetchurl {
     url =
       "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/WeChat_Dev_Tools_v${version}_x86_64_linux.AppImage";
-    sha256 = "sha256-rCDmoDEJlSKIJ8mECGGqMopgC4yAXnhv3ntc/KPULGU=";
+    sha256 = "sha256-XFKLfHHFQdErEDU7z/q/LomTNjxVreCDqNHX00we0GI=";
   };
 
   dontUnpack = true;
