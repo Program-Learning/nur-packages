@@ -22,13 +22,13 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     _package-ide() {
-      mkdir -p $out/{bin,share/wechat_devtools,lib}
+      mkdir -p $out/{bin,share/io.github.msojocs.wechat-devtools-linux,lib}
 
-      mv opt/apps/io.github.msojocs.wechat-devtools-linux $out/share/wechat_devtools
+      mv opt/apps/io.github.msojocs.wechat-devtools-linux $out/share/io.github.msojocs.wechat-devtools-linux
       mv usr/share/* $out/share/
 
       substituteInPlace $out/share/applications/io.github.msojocs.wechat-devtools-linux.desktop  \
-        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools" "$out/bin/wechat-devtools" 
+        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools" "$out/bin/wechat_dev_tools-deb" 
     }
     _package-ide
   '';
@@ -51,7 +51,7 @@ stdenv.mkDerivation rec {
   runtimeLibs = pkgs.lib.makeLibraryPath libraries;
 
   preFixup = ''
-    makeWrapper $out/share/wechat_devtools/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools $out/bin/wechat-devtools \
+    makeWrapper $out/share/io.github.msojocs.wechat-devtools-linux/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools $out/bin/wechat_dev_tools-deb \
       --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
       "''${gappsWrapperArgs[@]}"
   '';

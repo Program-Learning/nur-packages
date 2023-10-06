@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
       mkdir -p $out/{bin,lib/wechat_dev_tools}
       ln -s $src $out/lib/wechat_dev_tools/wechat_dev_tools.AppImage
       install -Dm644 $icon $out/share/icons/hicolor/48x48/apps/wechat_dev_tools.png
-      makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools \
+      makeWrapper ${appimage-run}/bin/appimage-run $out/bin/wechat_dev_tools-appimage \
       --argv0 "wechat_dev_tools" \
       --add-flags "$out/lib/wechat_dev_tools/wechat_dev_tools.AppImage"
     }
@@ -40,7 +40,7 @@ stdenv.mkDerivation rec {
   desktopItems = lib.toList (makeDesktopItem {
     name = "Wechat Dev Tools";
     genericName = "The development tools for wechat projects";
-    exec = "wechat_dev_tools";
+    exec = "wechat_dev_tools-appimage";
     icon = "wechat_dev_tools";
     comment = "The development tools for wechat projects";
     mimeTypes = [ "x-scheme-handler/wechatide" ];
