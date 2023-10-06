@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Adobe_Photoshop_CS6";
     homepage = "https://t.me/Linux_Appimages/1042";
-    license = licenses.unfree;
+    # license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     maintainers = with maintainers; [ Program-Learning ];
   };

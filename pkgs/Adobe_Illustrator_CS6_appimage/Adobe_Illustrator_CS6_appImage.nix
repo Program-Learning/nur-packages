@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Adobe_Illustrator_CS6";
     homepage = "https://t.me/Linux_Appimages/1052";
-    license = licenses.unfree;
+    # license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     maintainers = with maintainers; [ Program-Learning ];
   };

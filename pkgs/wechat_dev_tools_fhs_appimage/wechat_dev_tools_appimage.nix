@@ -52,7 +52,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Wechat Dev Tools";
     homepage = "https://github.com/msojocs/wechat-web-devtools-linux";
-    license = licenses.unfree;
+    # license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     maintainers = with maintainers; [ Program-Learning ];
   };
