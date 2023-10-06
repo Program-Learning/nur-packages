@@ -50,6 +50,6 @@ stdenv.mkDerivation rec {
     homepage = "https://t.me/Linux_Appimages/1052";
     # license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [ Program-Learning ];
+    # maintainers = with maintainers; [ Program-Learning ];
   };
 }
