@@ -1,16 +1,5 @@
-{ stdenv
-, fetchFromGitHub
-, cmake
-, pkg-config
-, qttools
-, qtx11extras
-, ffmpeg
-, wrapQtAppsHook
-, copyDesktopItems
-, android-tools
-, makeDesktopItem
-, lib
-}:
+{ stdenv, fetchFromGitHub, cmake, pkg-config, qttools, qtx11extras, ffmpeg
+, wrapQtAppsHook, copyDesktopItems, android-tools, makeDesktopItem, lib }:
 
 stdenv.mkDerivation rec {
   pname = "qtscrcpy";
@@ -42,18 +31,16 @@ stdenv.mkDerivation rec {
   '';
 
   # https://aur.archlinux.org/cgit/aur.git/tree/qtscrcpy.desktop?h=qtscrcpy
-  desktopItems = [
-    (makeDesktopItem {
-      name = pname;
-      type = "Application";
-      icon = pname;
-      desktopName = "QtScrcpy";
-      exec = "QtScrcpy";
-      terminal = false;
-      categories = "Development;Utility";
-      comment = "Android real-time screencast control tool";
-    })
-  ];
+  desktopItems = lib.toList (makeDesktopItem {
+    name = pname;
+    type = "Application";
+    icon = pname;
+    desktopName = "QtScrcpy";
+    exec = "QtScrcpy";
+    terminal = false;
+    categories = "Development;Utility";
+    comment = "Android real-time screencast control tool";
+  });
 
   meta = with lib; {
     description = "Android real-time display control software";
