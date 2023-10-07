@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
     desktopName = "QtScrcpy";
     exec = "QtScrcpy";
     terminal = false;
-    categories = "Development;Utility";
+    categories = [ "Development;Utility" ];
     comment = "Android real-time screencast control tool";
   });
 
