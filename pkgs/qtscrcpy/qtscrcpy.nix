@@ -58,6 +58,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Android real-time display control software";
     homepage = "https://github.com/barry-ran/QtScrcpy";
+    # https://github.com/NixOS/nixpkgs/commit/d896f0d8e02d3a251e595761807eb9656a221685
     license = licenses.asl20;
     maintainers = [ maintainers.vanilla ];
     platforms = platforms.linux;
