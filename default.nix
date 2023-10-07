@@ -26,7 +26,7 @@
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
   wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
-  qtscrcpy = libsForQt5.callPackage ./pkgs/qtscrcpy { };
+  qtscrcpy = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
