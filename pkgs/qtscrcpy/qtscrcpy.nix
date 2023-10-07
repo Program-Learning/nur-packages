@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     owner = "barry-ran";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-2d7AIUra7Uc/N0Ako8JYo07GUTPNgorxl2hmeDJOGPU=";
+    sha256 = "sha256-Yu39b+HBZh1QLZMsps6S7wYMokQ4H+ncENr/fdVs8s0=";
   };
 
   nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook copyDesktopItems ];
