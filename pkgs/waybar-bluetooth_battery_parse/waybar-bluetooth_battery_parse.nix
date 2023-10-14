@@ -1,11 +1,12 @@
 # When you use pkgs.callPackage, parameters here will be filled with packages from Nixpkgs (if there's a match)
 { stdenv, fetchFromGitHub, cmake, gcc }@args:
 let
+  # Download source code from GitHub
   src = fetchFromGitHub ({
     owner = "Program-Learning";
     repo = "waybar-bluetooth_battery_parse";
     # Commit or tag, note that fetchFromGitHub cannot follow a branch!
-    rev = "96209641f510ac06f157f5493893ba55ef2a4dc7";
+    rev = "e631125b230064d6dfe18900047b94d33e7d4522";
     # Download git submodules, most packages don't need this
     fetchSubmodules = false;
     # Don't know how to calculate the SHA256 here? Comment it out and build the package
@@ -16,10 +17,8 @@ in stdenv.mkDerivation rec {
   # Specify package name and version
   pname = "waybar-bluetooth_battery_parse";
   version = "0.0.2";
-  src = src;
-  buildInputs = [ cmake ];
-
-  # Download source code from GitHub
+  inherit src;
+  buildInputs = [ cmake gcc ];
 
   # Parallel building, drastically speeds up packaging, enabled by default.
   # You only want to turn this off for one of the rare packages that fails with this.
@@ -29,10 +28,10 @@ in stdenv.mkDerivation rec {
   dontFixCmake = true;
 
   # Add CMake to the building environment, to generate Makefile with it
-  nativeBuildInputs = [ cmake ];
-
-  # Arguments to CMake that controls functionalities of liboqs
-  cmakeFlags = [ "-DCMAKE_INSTALL_PREFIX=$out" ];
-
+  nativeBuildInputs = [ cmake gcc ];
+  installPhase = ''
+    mkdir -p $out/bin
+    mv waybar-bluetooth_battery_parse $out/bin
+  '';
   # stdenv.mkDerivation automatically does the rest for you
 }
