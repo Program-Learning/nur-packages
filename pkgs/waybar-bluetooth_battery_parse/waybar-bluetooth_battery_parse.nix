@@ -6,7 +6,7 @@ let
     owner = "Program-Learning";
     repo = "waybar-bluetooth_battery_parse";
     # Commit or tag, note that fetchFromGitHub cannot follow a branch!
-    rev = "e631125b230064d6dfe18900047b94d33e7d4522";
+    rev = "963b2c1b3e35ac6153267c98805b168809cb9364";
     # Download git submodules, most packages don't need this
     fetchSubmodules = false;
     # Don't know how to calculate the SHA256 here? Comment it out and build the package
