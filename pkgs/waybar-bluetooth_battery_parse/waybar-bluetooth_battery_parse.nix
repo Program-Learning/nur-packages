@@ -33,5 +33,13 @@ in stdenv.mkDerivation rec {
     mkdir -p $out/bin
     mv waybar-bluetooth_battery_parse $out/bin
   '';
+  # look this https://man.archlinux.org/man/waybar-bluetooth.5
+  # the only thing to do is set the following in your configuration.nix
+  # hardware.bluetooth.settings = {
+  #   General = {
+  #     Experimental = true;
+  #   };
+  # };
+  broken = true;
   # stdenv.mkDerivation automatically does the rest for you
 }
