@@ -27,6 +27,7 @@
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
   wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
   qtscrcpy = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy { };
+  waybar-bluetooth_battery_parse = pkgs.callPackage ./pkgs/waybar-bluetooth_battery_parse { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
