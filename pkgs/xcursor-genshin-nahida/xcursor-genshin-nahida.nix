@@ -9,17 +9,17 @@ stdenv.mkDerivation rec {
     owner = "barry-ran";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-Yu39b+HBZh1QLZMsps6S7wYMokQ4H+ncENr/fdVs8s0=";
+    sha256 = "sha256-2d7AIUra7Uc/N0Ako8JYo07GUTPNgorxl2hmeDJOGPU=";
   };
 
   nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook copyDesktopItems ];
   buildInputs = [ qttools qtx11extras ffmpeg ];
 
-  # postPatch = ''
-  #   substituteInPlace ./QtScrcpy/main.cpp \
-  #     --replace "../../../third_party/adb/linux/adb" "${android-tools.out}/bin/adb" \
-  #     --replace "../../../third_party/scrcpy-server" "$out/scrcpy-server"
-  # '';
+  postPatch = ''
+    substituteInPlace ./QtScrcpy/main.cpp \
+      --replace "../../../third_party/adb/linux/adb" "${android-tools.out}/bin/adb" \
+      --replace "../../../third_party/scrcpy-server" "$out/scrcpy-server"
+  '';
 
   installPhase = ''
     mkdir -p $out/bin/
@@ -31,16 +31,18 @@ stdenv.mkDerivation rec {
   '';
 
   # https://aur.archlinux.org/cgit/aur.git/tree/qtscrcpy.desktop?h=qtscrcpy
-  desktopItems = lib.toList (makeDesktopItem {
-    name = pname;
-    type = "Application";
-    icon = pname;
-    desktopName = "QtScrcpy";
-    exec = "QtScrcpy";
-    terminal = false;
-    categories = [ "Development" "Utility" ];
-    comment = "Android real-time screencast control tool";
-  });
+  desktopItems = [
+    (makeDesktopItem {
+      name = pname;
+      type = "Application";
+      icon = pname;
+      desktopName = "QtScrcpy";
+      exec = "QtScrcpy";
+      terminal = false;
+      categories = "Development;Utility";
+      comment = "Android real-time screencast control tool";
+    })
+  ];
 
   meta = with lib; {
     description = "Android real-time display control software";
@@ -48,7 +50,7 @@ stdenv.mkDerivation rec {
     license = licenses.asl20;
     maintainers = [ maintainers.vanilla ];
     platforms = platforms.linux;
-    # broken = true;
+    broken = true;
   };
 }
 # https://github.com/NixOS/nixpkgs/commit/d896f0d8e02d3a251e595761807eb9656a221685
