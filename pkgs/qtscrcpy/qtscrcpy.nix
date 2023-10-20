@@ -10,6 +10,7 @@ stdenv.mkDerivation rec {
     repo = pname;
     rev = "v${version}";
     sha256 = "sha256-Yu39b+HBZh1QLZMsps6S7wYMokQ4H+ncENr/fdVs8s0=";
+    fetchSubmodules = true;
   };
 
   nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook copyDesktopItems ];
