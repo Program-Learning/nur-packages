@@ -16,11 +16,11 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook copyDesktopItems ];
   buildInputs = [ qttools qtx11extras ffmpeg ];
 
-  # postPatch = ''
-  #   substituteInPlace ./QtScrcpy/main.cpp \
-  #     --replace "../../../third_party/adb/linux/adb" "${android-tools.out}/bin/adb" \
-  #     --replace "../../../third_party/scrcpy-server" "$out/scrcpy-server"
-  # '';
+  postPatch = ''
+    substituteInPlace ./QtScrcpy/main.cpp \
+      --replace "../../../third_party/adb/linux/adb" "${android-tools.out}/bin/adb" \
+      --replace "../../../third_party/scrcpy-server" "$out/scrcpy-server"
+  '';
 
   installPhase = ''
     mkdir -p $out/bin/
