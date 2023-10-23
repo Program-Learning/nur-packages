@@ -49,7 +49,7 @@ stdenv.mkDerivation rec {
     license = licenses.asl20;
     maintainers = [ maintainers.vanilla ];
     platforms = platforms.linux;
-    # broken = true;
+    broken = true;
   };
 }
 # https://github.com/NixOS/nixpkgs/commit/d896f0d8e02d3a251e595761807eb9656a221685
