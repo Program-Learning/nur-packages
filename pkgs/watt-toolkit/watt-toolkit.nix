@@ -1,42 +1,28 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, imagemagick
-, copyDesktopItems
-, makeDesktopItem
-, autoPatchelfHook
-, wrapGAppsHook
-, icu
-, openssl
-, xorg
-}:
+{ lib, stdenv, fetchurl, dpkg, imagemagick, copyDesktopItems, makeDesktopItem
+, autoPatchelfHook, wrapGAppsHook, icu, openssl, xorg }:
 
 let
   version = "2.8.6";
   srcs = {
     x86_64-linux = fetchurl {
-      url = "https://github.com/BeyondDimension/SteamTools/releases/download/${version}/Steam++_linux_x64_v${version}.deb";
+      url =
+        "https://github.com/BeyondDimension/SteamTools/releases/download/${version}/Steam++_linux_x64_v${version}.deb";
       sha256 = "183393l89s1il6ihyhwn3aai13yvgdi6831c09zmpvlcbaks0l9d";
     };
     aarch64-linux = fetchurl {
-      url = "https://github.com/BeyondDimension/SteamTools/releases/download/${version}/Steam++_linux_arm64_v${version}.deb";
+      url =
+        "https://github.com/BeyondDimension/SteamTools/releases/download/${version}/Steam++_linux_arm64_v${version}.deb";
       sha256 = "1k3j9kr6mkrni7cbszb5sx4bj25ajdqsjlcrz4hm9kd3fc054zgf";
     };
   };
-  src = srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
-in
-stdenv.mkDerivation rec {
+  src = srcs.${stdenv.hostPlatform.system} or (throw
+    "Unsupported system: ${stdenv.hostPlatform.system}");
+in stdenv.mkDerivation rec {
   pname = "watt-toolkit";
   inherit version src;
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    dpkg
-    wrapGAppsHook
-    imagemagick
-    copyDesktopItems
-  ];
+  nativeBuildInputs =
+    [ autoPatchelfHook dpkg wrapGAppsHook imagemagick copyDesktopItems ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -59,22 +45,14 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  preFixup =
-    let
-      libpath = lib.makeLibraryPath
-        ([
-          icu
-          openssl
-          xorg.libX11
-          xorg.libICE
-          xorg.libSM
-        ]);
-    in
-    ''
-      gappsWrapperArgs+=(
-        --set LD_LIBRARY_PATH ${libpath}
-      )
-    '';
+  preFixup = let
+    libpath =
+      lib.makeLibraryPath ([ icu openssl xorg.libX11 xorg.libICE xorg.libSM ]);
+  in ''
+    gappsWrapperArgs+=(
+      --set LD_LIBRARY_PATH ${libpath}
+    )
+  '';
 
   meta = with lib; {
     homepage = "https://steampp.net";
@@ -85,3 +63,4 @@ stdenv.mkDerivation rec {
     platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }
+# https://github.com/NixOS/nixpkgs/commit/dc8096826abb3a3e5addc633ea74a58cceb1c78d
