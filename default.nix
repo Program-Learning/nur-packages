@@ -33,6 +33,7 @@
     iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport =
       true;
   };
+  watt-toolkit = pkgs.callPackage ../pkgs/watt-toolkit { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
