@@ -36,7 +36,7 @@ in stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    runHook preInstall
+    # runHook preInstall
     mkdir -p $out/opt $out/bin $out/share/icons/hicolor/256x256/apps
     cp -r usr/share/Steam++ $out/opt/watt-toolkit
     magick usr/share/Steam++/Steam++.ico watt-toolkit.png
