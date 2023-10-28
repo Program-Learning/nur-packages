@@ -34,7 +34,7 @@
       true;
   };
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
-  AppimageLauncher = pkgs.callPackage ./pkgs/AppimageLauncher { };
+  AppimageLauncher = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
