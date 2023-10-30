@@ -19,6 +19,7 @@
 # }
 
 {
+  fetchurl,
   lib,
   stdenv,
   dpkg,
@@ -35,7 +36,7 @@
 let
   version = "2.2.0";
 
-  src = builtins.fetchurl {
+  src = fetchurl {
     url = "https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb";
     sha256 = "sha256:0zqaqxalb3zwmcqd5z5k1im9yslq29v1a52b0y8x0zdslrbdpfgl";
   };
@@ -79,7 +80,7 @@ in stdenv.mkDerivation {
 
   meta = with lib; {
     description = "appimagelauncher";
-    homepage = https://github.com/TheAssassin/AppImageLauncher;
+    homepage = "https://github.com/TheAssassin/AppImageLauncher";
     license = licenses.mit;
     maintainers = [ ];
     platforms = [ "x86_64-linux" ];
