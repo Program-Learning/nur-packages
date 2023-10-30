@@ -59,7 +59,7 @@ in stdenv.mkDerivation rec {
     description = "A cross-platform Steam toolbox";
     license = licenses.gpl3Only;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [ rs0vere ];
+    # maintainers = with maintainers; [ rs0vere ];
     platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }
