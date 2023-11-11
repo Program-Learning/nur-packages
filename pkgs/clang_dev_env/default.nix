@@ -1,4 +1,4 @@
-{ lib, buildFHSEnvChroot, xkeyboard_config, callPackage, }:
+{ buildFHSEnvChroot, ... }:
 buildFHSEnvChroot {
   name = "clang_dev-env";
   targetPkgs = pkgs:
@@ -7,5 +7,7 @@ buildFHSEnvChroot {
       ccls
       llvmPackages.clang # c/c++ tools with clang-tools such as clangd
     ];
-  profile = "";
+  profile = ''
+    export FHS=1
+  '';
 }
