@@ -30,5 +30,6 @@ in buildFHSEnvChroot {
     export FHS=1
 
     wechat-devtools
+    # wechat_dev_tools
   '';
 }
