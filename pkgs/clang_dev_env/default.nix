@@ -1,4 +1,4 @@
-{ buildEnv, ... }:
+{ pkgs, ... }:
 buildEnv {
   name = "clang_dev_env";
   targetPkgs = pkgs:
