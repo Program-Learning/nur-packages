@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-buildEnv {
-  name = "clang_dev_env";
+{ buildFHSEnvChroot, ... }:
+buildFHSEnvChroot {
+  name = "clang_dev_env_fhs";
   targetPkgs = pkgs:
     with pkgs; [
       clang-tools
@@ -8,5 +8,6 @@ buildEnv {
       llvmPackages.clang # c/c++ tools with clang-tools such as clangd
     ];
   profile = ''
+    export FHS=1
   '';
 }
