@@ -11,7 +11,9 @@
     sha256 = "sha256-HMj73tYcQbrfeezx/aN3PH5YRaAFkzym7Vr9o74bmsI=";
   };
 in
-  pkgs.qq.overrideAttrs (oldAttrs@{ nativeBuildInputs ? [ ], ... }: {
+  pkgs.qq.overrideAttrs (oldAttrs @ {nativeBuildInputs ? [], ...}: {
+    version = "3.2.0-16449";
+    _hash = "464d27bd";
     pname = "llqqnt";
 
     nativeBuildInputs = nativeBuildInputs ++ [pkgs.p7zip];
