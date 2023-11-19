@@ -11,8 +11,10 @@
     sha256 = "sha256-HMj73tYcQbrfeezx/aN3PH5YRaAFkzym7Vr9o74bmsI=";
   };
 in
-  pkgs.qq.overrideAttrs (oldAttrs: {
+  pkgs.qq.overrideAttrs (oldAttrs@{ nativeBuildInputs ? [ ], ... }: {
     pname = "llqqnt";
+
+    nativeBuildInputs = nativeBuildInputs ++ [pkgs.p7zip];
 
     postInstall = ''
       mkdir $out/opt/QQ/resources/app/LiteLoader
