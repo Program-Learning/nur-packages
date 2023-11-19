@@ -15,5 +15,6 @@ in
   pkgs.stdenv.mkDerivation {
     name = "clang_dev_env_fhs-shell";
     nativeBuildInputs = [fhs];
+    src = builtins.path { path = ./.; };
     shellHook = "exec clang_dev_env_fhs";
   }
