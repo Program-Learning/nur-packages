@@ -1,3 +1,4 @@
+#https://github.com/Prismwork/llqqnt-nix/blob/trunk/pkgs/llqqnt.nix
 { pkgs, ... }:
 
 let

@@ -29,6 +29,8 @@
   qtscrcpy = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy { };
   waybar-bluetooth_battery_parse =
     pkgs.callPackage ./pkgs/waybar-bluetooth_battery_parse { };
+  llqqnt =
+    pkgs.callPackage ./pkgs/llqqnt {};
   CrossOver = pkgs.callPackage ./pkgs/CrossOver {
     iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport =
       true;
