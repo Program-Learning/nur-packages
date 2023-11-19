@@ -8,7 +8,7 @@
   LiteLoaderQQNT_VERSION = "0.5.9";
   LiteLoaderQQNT_SRC = fetchurl {
     url = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/${LiteLoaderQQNT_VERSION}/LiteLoaderQQNT.zip";
-    sha256 = "";
+    sha256 = "sha256-HMj73tYcQbrfeezx/aN3PH5YRaAFkzym7Vr9o74bmsI=";
   };
 in
   pkgs.qq.overrideAttrs (oldAttrs: {
