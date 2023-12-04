@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-KYvrwftIGfxjEImqDU8iIwqWUWeTPiejtrH3e1Gy0jw=";
   };
 
-  buildInputs = with pkgs; [ ];
+  buildInputs = with pkgs; [ glibc ];
   nativeBuildInputs = with pkgs; [
     makeWrapper
     copyDesktopItems
