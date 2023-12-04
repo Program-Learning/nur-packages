@@ -25,6 +25,8 @@
     pkgs.callPackage ./pkgs/Adobe_Illustrator_CS6_appimage { };
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
+  escrcpy_appimage =
+    pkgs.callPackage ./pkgs/escrcpy_appimage { };
   wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
   qtscrcpy = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy { };
   waybar-bluetooth_battery_parse =
