@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/viarotel-org/escrcpy/releases/download/v${version}/Escrcpy-${version}-linux-x86_64.AppImage";
-    sha256 = "";
+    sha256 = "sha256-f4Q84ILxDWycbR81JlHzz+SJ4VIChFx1YojbkBY9GUo=";
   };
 
   dontUnpack = true;
