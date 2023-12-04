@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   icon = fetchurl {
     url =
       "https://github.com/viarotel-org/escrcpy/blob/bb802943b19ecf9a6d094f6f0816c26d67cb39b9/electron/resources/build/logo.png?raw=true";
-    sha256 = "";
+    sha256 = "sha256-KYvrwftIGfxjEImqDU8iIwqWUWeTPiejtrH3e1Gy0jw=";
   };
 
   buildInputs = with pkgs; [ ];
