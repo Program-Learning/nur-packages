@@ -1,6 +1,17 @@
-{ stdenv, fetchFromGitHub, cmake, pkg-config, qttools, qtx11extras, ffmpeg
-, wrapQtAppsHook, copyDesktopItems, android-tools, makeDesktopItem, lib }:
-
+{
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  pkg-config,
+  qttools,
+  qtx11extras,
+  ffmpeg,
+  wrapQtAppsHook,
+  copyDesktopItems,
+  android-tools,
+  makeDesktopItem,
+  lib,
+}:
 stdenv.mkDerivation rec {
   pname = "qtscrcpy";
   version = "1.7.0";
@@ -13,8 +24,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook copyDesktopItems ];
-  buildInputs = [ qttools qtx11extras ffmpeg ];
+  nativeBuildInputs = [cmake pkg-config wrapQtAppsHook copyDesktopItems];
+  buildInputs = [qttools qtx11extras ffmpeg];
 
   postPatch = ''
     substituteInPlace ./QtScrcpy/main.cpp \
@@ -39,7 +50,7 @@ stdenv.mkDerivation rec {
     desktopName = "QtScrcpy";
     exec = "QtScrcpy";
     terminal = false;
-    categories = [ "Development" "Utility" ];
+    categories = ["Development" "Utility"];
     comment = "Android real-time screencast control tool";
   });
 
@@ -47,9 +58,10 @@ stdenv.mkDerivation rec {
     description = "Android real-time display control software";
     homepage = "https://github.com/barry-ran/QtScrcpy";
     license = licenses.asl20;
-    maintainers = [ maintainers.vanilla ];
+    # maintainers = with maintainers; [ Program-Learning ];
     platforms = platforms.linux;
     broken = true;
   };
 }
 # https://github.com/NixOS/nixpkgs/commit/d896f0d8e02d3a251e595761807eb9656a221685
+

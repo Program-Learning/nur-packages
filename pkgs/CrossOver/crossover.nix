@@ -1,12 +1,12 @@
-{ lib
-, fetchurl
-, stdenv
-, darwin
-, dxvk
-, unzip
-, iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport ? false
+{
+  lib,
+  fetchurl,
+  stdenv,
+  darwin,
+  dxvk,
+  unzip,
+  iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport ? false,
 }:
-
 stdenv.mkDerivation rec {
   pname =
     if !iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-e/tFudvMO0igTfgwN81kAwicLiGliUdCFEqr/AljZnc=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [unzip];
 
   buildPhase = ''
     install_dxvk() {
@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
     description = "CrossOver allows you to run Microsoft applications on your Mac.";
     homepage = "https://www.codeweavers.com/crossover";
     license = lib.licenses.unfree;
-    platforms = [ "x86_64-darwin" ];
+    platforms = ["x86_64-darwin"];
+    # maintainers = with maintainers; [ Program-Learning ];
   };
 }
 # https://github.com/bestlem/nixos-configs/blob/5965fe0595370899f393745afc5e0da7ee098b84/pkgs/crossover/default.nix
+

@@ -1,23 +1,28 @@
-{ fetchurl, lib, stdenv, pkgs, appimage-run, makeDesktopItem }:
+{
+  fetchurl,
+  lib,
+  stdenv,
+  pkgs,
+  appimage-run,
+  makeDesktopItem,
+}:
 stdenv.mkDerivation rec {
   pname = "escrcpy";
   version = "1.16.3";
 
   src = fetchurl {
-    url =
-      "https://github.com/viarotel-org/escrcpy/releases/download/v${version}/Escrcpy-${version}-linux-x86_64.AppImage";
+    url = "https://github.com/viarotel-org/escrcpy/releases/download/v${version}/Escrcpy-${version}-linux-x86_64.AppImage";
     sha256 = "sha256-f4Q84ILxDWycbR81JlHzz+SJ4VIChFx1YojbkBY9GUo=";
   };
 
   dontUnpack = true;
 
   icon = fetchurl {
-    url =
-      "https://raw.githubusercontent.com/viarotel-org/escrcpy/bb802943b19ecf9a6d094f6f0816c26d67cb39b9/electron/resources/build/logo.png";
+    url = "https://raw.githubusercontent.com/viarotel-org/escrcpy/bb802943b19ecf9a6d094f6f0816c26d67cb39b9/electron/resources/build/logo.png";
     sha256 = "sha256-KYvrwftIGfxjEImqDU8iIwqWUWeTPiejtrH3e1Gy0jw=";
   };
 
-  buildInputs = with pkgs; [ ];
+  buildInputs = with pkgs; [];
   nativeBuildInputs = with pkgs; [
     makeWrapper
     copyDesktopItems
@@ -44,14 +49,14 @@ stdenv.mkDerivation rec {
     icon = "escrcpy";
     comment = "Scrcpy Powered by Electron";
     desktopName = "Escrcpy";
-    categories = [ "Utility" ];
+    categories = ["Utility"];
   });
-  
+
   meta = with lib; {
     description = "Escrcpy";
     homepage = "https://github.com/viarotel-org/escrcpy";
     # license = licenses.apache;
-    platforms = [ "x86_64-linux" ];
+    platforms = ["x86_64-linux"];
     # maintainers = with maintainers; [ Program-Learning ];
   };
 }

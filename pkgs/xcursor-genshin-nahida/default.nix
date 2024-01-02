@@ -1,1 +1,1 @@
-import ./qtscrcpy.nix
+import ./xcursor-genshin-nahida.nix

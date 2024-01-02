@@ -24,10 +24,10 @@ in
         libusb
       ];
     profile = ''
-      export QT_XKB_CONFIG_ROOT="${xkeyboard_config}/etc/X11/xkb"
-      export FHS=1
+        export QT_XKB_CONFIG_ROOT="${xkeyboard_config}/etc/X11/xkb"
+        export FHS=1
 
-      wechat-devtools
-    # wechat_dev_tools
+        wechat-devtools
+      # wechat_dev_tools
     '';
   }

@@ -1,11 +1,15 @@
-{ fetchurl, lib, stdenv, pkgs, }:
+{
+  fetchurl,
+  lib,
+  stdenv,
+  pkgs,
+}:
 stdenv.mkDerivation rec {
   pname = "wechat_dev_tools";
   version = "1.06.2307260-1";
 
   src = fetchurl {
-    url =
-      "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/io.github.msojocs.wechat-devtools-linux_${version}_amd64.deb";
+    url = "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${version}/io.github.msojocs.wechat-devtools-linux_${version}_amd64.deb";
     sha256 = "sha256-lwjGqUBNmJRhF+mEI2Skd5tOPWkvzP3gOwJGr8m/LBw=";
   };
   sourceRoot = ".";
@@ -17,8 +21,7 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  unpackPhase =
-    "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
+  unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
 
   installPhase = ''
     _package-ide() {
@@ -28,7 +31,7 @@ stdenv.mkDerivation rec {
       mv usr/share/* $out/share/
 
       substituteInPlace $out/share/applications/io.github.msojocs.wechat-devtools-linux.desktop  \
-        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools" "$out/bin/wechat_dev_tools-deb" 
+        --replace "/opt/apps/io.github.msojocs.wechat-devtools-linux/files/bin/bin/wechat-devtools" "$out/bin/wechat_dev_tools-deb"
     }
     _package-ide
   '';
@@ -60,7 +63,7 @@ stdenv.mkDerivation rec {
     description = "Wechat Dev Tools";
     homepage = "https://github.com/msojocs/wechat-web-devtools-linux";
     license = licenses.unfree;
-    platforms = [ "x86_64-linux" ];
+    platforms = ["x86_64-linux"];
     broken = true;
     # maintainers = with maintainers; [ Program-Learning ];
   };
