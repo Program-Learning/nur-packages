@@ -37,6 +37,7 @@
     iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport =
       true;
   };
+  xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida {};
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };

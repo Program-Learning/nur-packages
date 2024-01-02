@@ -79,7 +79,7 @@ in
       description = "appimagelauncher";
       homepage = "https://github.com/TheAssassin/AppImageLauncher";
       license = licenses.mit;
-      # maintainers = with maintainers; [ Program-Learning ];
+      maintainers = [ ];
       platforms = ["x86_64-linux"];
     };
   }

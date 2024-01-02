@@ -55,7 +55,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.codeweavers.com/crossover";
     license = lib.licenses.unfree;
     platforms = ["x86_64-darwin"];
-    # maintainers = with maintainers; [ Program-Learning ];
   };
 }
 # https://github.com/bestlem/nixos-configs/blob/5965fe0595370899f393745afc5e0da7ee098b84/pkgs/crossover/default.nix
