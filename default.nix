@@ -28,9 +28,9 @@
   escrcpy_appimage =
     pkgs.callPackage ./pkgs/escrcpy_appimage { };
   wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
-  qtscrcpy = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy { };
-  waybar-bluetooth_battery_parse =
-    pkgs.callPackage ./pkgs/waybar-bluetooth_battery_parse { };
+  qtscrcpy_git = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy_git { };
+  waybar_bluetooth_battery_parse =
+    pkgs.callPackage ./pkgs/waybar_bluetooth_battery_parse { };
   llqqnt =
     pkgs.callPackage ./pkgs/llqqnt {};
   CrossOver = pkgs.callPackage ./pkgs/CrossOver {
@@ -40,6 +40,7 @@
   # Usage:
   # nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida
   xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida {};
+  MIO_KITCHEN_bin = pkgs.callPackage ./pkgs/MIO_KITCHEN_bin {};
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
