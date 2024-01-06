@@ -2,6 +2,7 @@
   fetchzip,
   fetchurl,
   stdenvNoCC,
+  zlib,
   pkgs,
   lib,
   ...
@@ -14,7 +15,7 @@
   package_description = "The Android Rom Tool Use python language";
 in
   stdenvNoCC.mkDerivation rec {
-    pname = package_nane + package_type;
+    pname = package_nane + "_" + package_type;
     version = package_version;
 
     src = fetchzip {
@@ -24,20 +25,25 @@ in
     };
 
     nativeBuildInputs = with pkgs; [
-      autoPatchelfHook
+      # autoPatchelfHook
+      makeWrapper
     ];
     buildInputs = [
-      pkgs.zlib
+      # zlib
     ];
     installPhase = ''
       runHook preInstall
       _install() {
         mkdir -p $out/{bin,MIO-KITCHEN}
-        cp -r ${src} $out/MIO-KITCHEN
-        ln -s $out/MIO-KITCHEN/tool $out/bin/MIO-KITCHEN
+        cp -r ${src}/* $out/MIO-KITCHEN
+        echo ${src}
+        chmod a+x $out/MIO-KITCHEN/tool
       }
       _install
       runHook postInstall
+    '';
+    preFixup = ''
+      makeWrapper $out/MIO-KITCHEN/tool $out/bin/MIO-KITCHEN
     '';
 
     meta = with lib; {
