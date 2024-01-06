@@ -44,7 +44,7 @@
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
-  AppimageLauncher = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher { };
+  AppimageLauncher_deb = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
