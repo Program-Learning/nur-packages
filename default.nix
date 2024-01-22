@@ -41,6 +41,7 @@
   # nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida
   xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida {};
   MIO_KITCHEN_bin = pkgs.callPackage ./pkgs/MIO_KITCHEN_bin {};
+  XiaoMiToolV2 = pkgs.callPackage ./pkgs/XiaoMiToolV2 {};
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
