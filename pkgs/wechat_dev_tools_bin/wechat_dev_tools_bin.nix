@@ -24,7 +24,8 @@ in
     nativeBuildInputs = with pkgs; [
       wrapGAppsHook
       autoPatchelfHook
-      makeWrapper
+      # makeWrapper
+      copyDesktopItems
     ];
 
     installPhase = ''
