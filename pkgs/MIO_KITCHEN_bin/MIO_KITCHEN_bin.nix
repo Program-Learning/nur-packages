@@ -15,7 +15,7 @@
   package_description = "The Android Rom Tool Use python language";
 in
   stdenvNoCC.mkDerivation rec {
-    pname = package_nane + "_" + package_type;
+    pname = "${package_nane}_${package_type}";
     version = package_version;
 
     src = fetchzip {
@@ -25,7 +25,7 @@ in
     };
 
     nativeBuildInputs = with pkgs; [
-      # autoPatchelfHook
+      autoPatchelfHook
       makeWrapper
     ];
     buildInputs = [
@@ -42,6 +42,7 @@ in
       _install
       runHook postInstall
     '';
+
     preFixup = ''
       makeWrapper $out/MIO-KITCHEN/tool $out/bin/MIO-KITCHEN
     '';

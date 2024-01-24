@@ -17,8 +17,8 @@
   # example-package = pkgs.callPackage ./pkgs/example-package { };
   wechat_dev_tools_fhs_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_appimage { };
-  wechat_dev_tools_fhs_deb =
-    pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_deb { };
+  wechat_dev_tools_fhs_bin =
+    pkgs.callPackage ./pkgs/wechat_dev_tools_fhs_bin { };
   Adobe_Photoshop_CS6_appimage =
     pkgs.callPackage ./pkgs/Adobe_Photoshop_CS6_appimage { };
   Adobe_Illustrator_CS6_appimage =
@@ -27,7 +27,7 @@
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
   escrcpy_appimage =
     pkgs.callPackage ./pkgs/escrcpy_appimage { };
-  wechat_dev_tools_deb = pkgs.callPackage ./pkgs/wechat_dev_tools_deb { };
+  wechat_dev_tools_bin = pkgs.callPackage ./pkgs/wechat_dev_tools_bin { };
   qtscrcpy_git = pkgs.libsForQt5.callPackage ./pkgs/qtscrcpy_git { };
   waybar_bluetooth_battery_parse =
     pkgs.callPackage ./pkgs/waybar_bluetooth_battery_parse { };
@@ -46,7 +46,7 @@
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
   AppimageLauncher_deb = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
-  AppimageLauncher_git = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
+  #AppimageLauncher_git = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_git { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
