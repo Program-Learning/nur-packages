@@ -2,25 +2,22 @@
 {
   pkgs,
   fetchurl,
+  fetchgit,
   ...
 }: let
-  # https://aur.archlinux.org/packages/liteloader-qqnt-bin
-  LiteLoaderQQNT_VERSION = "0.5.9";
-  LiteLoaderQQNT_SRC = fetchurl {
-    url = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/${LiteLoaderQQNT_VERSION}/LiteLoaderQQNT.zip";
-    sha256 = "sha256-HMj73tYcQbrfeezx/aN3PH5YRaAFkzym7Vr9o74bmsI=";
+  LiteLoaderQQNT_VERSION = "1.0.2";
+  LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
+  LiteLoaderQQNT_SRC = fetchgit {
+    url = LiteLoaderQQNT_URL;
+    sha256 = "sha256-4pWXd/C3Fgh0kQjHOdN1Dce82d9WQN7r/21M0W+JE5Y=";
   };
 in
-  pkgs.qq.overrideAttrs (oldAttrs @ {nativeBuildInputs ? [], ...}: {
-    version = "3.2.0-16449";
-    _hash = "464d27bd";
-    pname = "llqqnt";
-
+  pkgs.qq.overrideAttrs (oldAttrs @ {nativeBuildInputs ? [],version, ...}: {
     nativeBuildInputs = nativeBuildInputs ++ [pkgs.p7zip];
 
     postInstall = ''
-      mkdir $out/opt/QQ/resources/app/LiteLoader
-      7z x ${LiteLoaderQQNT_SRC} -o$out/opt/QQ/resources/app/LiteLoader -y
-      sed -i 's/"main": ".\/app_launcher\/index.js"/"main": ".\/LiteLoader"/' $out/opt/QQ/resources/app/package.json
+      sed -i '1s@^@require("${LiteLoaderQQNT_SRC}");\n@' $out/opt/QQ/resources/app/app_launcher/index.js
+      mkdir -vp $out/opt/QQ/resources/app/application/
+      cp -f ${LiteLoaderQQNT_SRC}/src/preload.js $out/opt/QQ/resources/app/application/
     '';
   })

@@ -25,6 +25,8 @@
     pkgs.callPackage ./pkgs/Adobe_Illustrator_CS6_appimage { };
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
+  # escrcpy_bin =
+  #   pkgs.callPackage ./pkgs/escrcpy_bin { };
   escrcpy_appimage =
     pkgs.callPackage ./pkgs/escrcpy_appimage { };
   wechat_dev_tools_bin = pkgs.callPackage ./pkgs/wechat_dev_tools_bin { };
