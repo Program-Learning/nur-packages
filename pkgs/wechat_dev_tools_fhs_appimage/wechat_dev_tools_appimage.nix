@@ -50,7 +50,7 @@ in
     '';
 
     desktopItems = lib.toList (makeDesktopItem {
-      name = "Wechat Dev Tools";
+      name = "Wechat Dev Tools(AppImage)";
       genericName = "The development tools for wechat projects";
       exec = "wechat_dev_tools-appimage";
       icon = "wechat_dev_tools";

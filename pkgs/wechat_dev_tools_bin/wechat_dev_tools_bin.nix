@@ -3,6 +3,7 @@
   lib,
   stdenv,
   pkgs,
+  makeDesktopItem,
 }: let
   package_nane = "wechat_dev_tools";
   package_type = "bin";
@@ -31,7 +32,7 @@ in
         mkdir -p $out/bin
 
         cp -r ${src} $out/WeChat_Dev_Tools_${github_release_tag}_x86_64_linux
-        
+
         substituteInPlace $out/WeChat_Dev_Tools_${github_release_tag}_x86_64_linux/bin/wechat-devtools  \
           --replace "#!/bin/bash" "#!/usr/bin/env bash"
         ln -s $out/WeChat_Dev_Tools_${github_release_tag}_x86_64_linux/bin/wechat-devtools $out/bin/wechat_dev_tools-bin
@@ -62,6 +63,18 @@ in
     #    --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
     #    "''${gappsWrapperArgs[@]}"
     #'';
+
+    desktopItems = lib.toList (makeDesktopItem {
+      name = "Wechat Dev Tools(Binary)";
+      genericName = "The development tools for wechat projects";
+      exec = "wechat_dev_tools-bin";
+      icon = "wechat_dev_tools";
+      comment = "The development tools for wechat projects";
+      mimeTypes = ["x-scheme-handler/wechatide"];
+      desktopName = "Wechat Dev Tools";
+      categories = ["Development" "WebDevelopment" "IDE"];
+      startupWMClass = "wechat_devtools";
+    });
 
     meta = with lib; {
       description = package_description;
