@@ -35,9 +35,9 @@ in
         fhs
       ];
     postInstall = ''
-      sed -i '1s@^@require("${LiteLoaderQQNT_SRC}");\n@' $out/opt/QQ/resources/app/app_launcher/index.js
+      sed -i "s@^Exec=.*@Exec=fhs -c 'LITELOADERQQNT_PROFILE=~/.local/share/LLQQNT $out/bin/qq'@g" $out/share/applications/qq.desktop
+      sed -i "1s@^@require("${LiteLoaderQQNT_SRC}");\n@" $out/opt/QQ/resources/app/app_launcher/index.js
       mkdir -vp $out/opt/QQ/resources/app/application/
-      sed 's@Exec=@Exec = env LITELOADERQQNT_PROFILE=~/.local/share/LLQQNT fhs -c @g' $out/share/applications/qq.desktop
       cp -f ${LiteLoaderQQNT_SRC}/src/preload.js $out/opt/QQ/resources/app/application/
     '';
   })
