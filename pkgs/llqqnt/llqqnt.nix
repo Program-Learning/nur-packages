@@ -36,7 +36,7 @@ in
       ];
     postInstall = ''
       # Patch QQ
-      sed -i "1s@^@require("${LiteLoaderQQNT_SRC}");\n@" $out/opt/QQ/resources/app/app_launcher/index.js
+      sed -i "1s@^@require(\"${LiteLoaderQQNT_SRC}\");\n@" $out/opt/QQ/resources/app/app_launcher/index.js
       mkdir -vp $out/opt/QQ/resources/app/application/
       cp -f ${LiteLoaderQQNT_SRC}/src/preload.js $out/opt/QQ/resources/app/application/
       # Use FHS environment run Patched QQ
