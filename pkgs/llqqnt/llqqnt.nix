@@ -40,6 +40,6 @@ in
       mkdir -vp $out/opt/QQ/resources/app/application/
       cp -f ${LiteLoaderQQNT_SRC}/src/preload.js $out/opt/QQ/resources/app/application/
       # Use FHS environment run Patched QQ
-      sed -i "s@^Exec=.*@Exec=${fhs}/bin/fhs -c 'LITELOADERQQNT_PROFILE=~/.local/share/LLQQNT $out/bin/qq'@g" $out/share/applications/qq.desktop
+      sed -i "s@^Exec=.*@Exec=${fhs}/bin/fhs -c 'LITELOADERQQNT_PROFILE=~/.local/share/LLQQNT $out/bin/qq %U'@g" $out/share/applications/qq.desktop
     '';
   })
