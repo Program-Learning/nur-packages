@@ -12,7 +12,7 @@ in
       ];
     profile = ''
       export FHS=1
-      export  LITELOADERQQNT_PROFILE=$XDG_DATA_HOME/LLQQNT
+      export LITELOADERQQNT_PROFILE=$XDG_DATA_HOME/LLQQNT
       qq
     '';
   }
