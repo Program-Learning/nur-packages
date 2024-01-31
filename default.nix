@@ -39,6 +39,7 @@
     iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport =
       true;
   };
+  fhs = pkgs.callPackage ./pkgs/fhs {};
   # Usage:
   # nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida
   xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida {};
