@@ -23,7 +23,8 @@
   src = srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
   aur = fetchgit {
     url = "https://gitee.com/MayuriNFC/wechat-universal-bwrap.git";
-    sha256 = "sha256-8Ncm0WLMZ1mRUb7b8eWyxam7mgOsYI8+MvS9AzWrpPU=";
+    sha256 = "sha256-VWWDrsdT84I6WGUba8jb6CuPPtqfomGGcwQvTBsNgkg=";
+    #sha256 = "";
   };
   _pkgname = "wechat-universal";
   pname = "${_pkgname}-bwrap";
@@ -82,13 +83,15 @@ in
     ];
 
     installPhase = ''
+      export _lib_uos='libuosdevicea'
+      export _wechat_root="$out/usr/share/${_pkgname}"
       mkdir $out
       mkdir $out/bin
       bsdtar -xOf ${src} ./data.tar.xz |
           xz -cdT0 |
           bsdtar -xpC $out ./opt/apps/com.tencent.wechat
       mv $out/opt/{apps/com.tencent.wechat/files,${_pkgname}}
-      rm $out/opt/${_pkgname}/libuosdevicea.so
+      rm $out/opt/${_pkgname}/$_lib_uos.so
 
       for res in 16 32 48 64 128 256; do
           install -Dm644 \
@@ -98,17 +101,19 @@ in
       rm -rf $out/opt/apps
 
       install -dm755 $out/usr/lib/license
-      export _lib_uos='libuosdevicea'
       gcc -fPIC -shared "${aur}/''${_lib_uos}.c" -o "''${_lib_uos}.so"
-      install -Dm755 libuosdevicea.so $out/usr/lib/license/libuosdevicea.so
-      echo 'DISTRIB_ID=uos' | install -Dm755 /dev/stdin $out/etc/${_pkgname}/lsb-release
+      install -Dm755 $_lib_uos.so $_wechat_root/usr/lib/license/$_lib_uos.so
+      echo 'DISTRIB_ID=uos' | install -Dm755 /dev/stdin $_wechat_root/etc/lsb-release
 
-      install -Dm755 ${fake_dde-file-manager}/bin/fake-dde-file-manager $out/usr/bin/dde-file-manager
-      install -Dm755 ${fake_dde-file-manager}/bin/fake-dde-file-manager $out/bin/dde-file-manager
+      install -Dm755 ${fake_dde-file-manager}/bin/fake-dde-file-manager $_wechat_root/usr/bin/dde-file-manager
       install -Dm644 ${desktop} $out/usr/share/applications/${_pkgname}.desktop
       install -Dm755 ${startScript}/bin/wechat-universal $out/usr/bin/${_pkgname}
       install -Dm755 ${startScript}/bin/wechat-universal $out/bin/${_pkgname}
+      sed -i "s@OutputPath@$out@g" $out/usr/bin/${_pkgname}
+      sed -i "s@OutputPath@$out@g" $out/bin/${_pkgname}
     '';
+    postInstall = ''
+      '';
 
     meta = with lib; {
       description = "WeChat (Universal) with bwrap sandbox";

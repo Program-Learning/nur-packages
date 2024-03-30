@@ -1,7 +1,7 @@
 #https://github.com/Prismwork/llqqnt-nix/blob/trunk/pkgs/llqqnt.nix
 {pkgs, ...}: let
-  LiteLoaderQQNT_VERSION = "1.0.2";
-  LiteLoaderQQNT_REV = "e570e4b250edfa00aced5149ddf0ee8692cb0d0a";
+  LiteLoaderQQNT_VERSION = "1.0.3";
+  LiteLoaderQQNT_REV = "e570e4bw250edfa00aced5149ddf0ee8692cb0d0a";
   LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
   LiteLoaderQQNT_SRC = fetchGit {
     url = LiteLoaderQQNT_URL;
