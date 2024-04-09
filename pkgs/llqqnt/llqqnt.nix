@@ -1,11 +1,12 @@
 #https://github.com/Prismwork/llqqnt-nix/blob/trunk/pkgs/llqqnt.nix
 {pkgs, ...}: let
-  LiteLoaderQQNT_VERSION = "1.0.3";
-  LiteLoaderQQNT_REV = "e570e4bw250edfa00aced5149ddf0ee8692cb0d0a";
+  LiteLoaderQQNT_VERSION = "1.1.1";
+  LiteLoaderQQNT_REV = "6f1972d2bc83fe1a1d26e82a49ee15d8cc079018";
   LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
   LiteLoaderQQNT_SRC = fetchGit {
     url = LiteLoaderQQNT_URL;
     rev = LiteLoaderQQNT_REV;
+    allRefs = true;
     submodules = true;
   };
   fhs =
@@ -36,7 +37,7 @@ in
       ];
     postInstall = ''
       # Patch QQ
-      sed -i "1s@^@require(\"${LiteLoaderQQNT_SRC}\");\n@" $out/opt/QQ/resources/app/app_launcher/index.js
+      sed -i "1s@^@require(String.raw`${LiteLoaderQQNT_SRC}`);\nrequire('./launcher.node').load('external_index', module);\n@" $out/opt/QQ/resources/app/app_launcher/index.js
       mkdir -vp $out/opt/QQ/resources/app/application/
       cp -f ${LiteLoaderQQNT_SRC}/src/preload.js $out/opt/QQ/resources/app/application/
       # Use FHS environment run Patched QQ
