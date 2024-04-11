@@ -9,12 +9,13 @@
   wrapQtAppsHook,
   copyDesktopItems,
   android-tools,
+  scrcpy,
   makeDesktopItem,
   lib,
 }:
 stdenv.mkDerivation rec {
   pname = "qtscrcpy";
-  version = "1.7.0";
+  version = "2.2.1";
 
   src = fetchFromGitHub {
     owner = "barry-ran";
@@ -29,14 +30,13 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace ./QtScrcpy/main.cpp \
-      --replace "../../../third_party/adb/linux/adb" "${android-tools.out}/bin/adb" \
-      --replace "../../../third_party/scrcpy-server" "$out/scrcpy-server"
+      --replace "../../../QtScrcpy/QtScrcpyCore/src/third_party/adb/linux/adb" "${android-tools}/bin/adb" \
+      --replace "../../../QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server" "${scrcpy}/share/scrcpy/scrcpy-server"
   '';
 
   installPhase = ''
     mkdir -p $out/bin/
     cp ../output/linux/release/QtScrcpy $out/bin/
-    cp ${src}/third_party/scrcpy-server $out/
     mkdir -p $out/share/pixmaps/
     cp ${src}/backup/logo.png $out/share/pixmaps/${pname}.png
     runHook postInstall
