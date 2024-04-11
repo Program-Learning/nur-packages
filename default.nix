@@ -25,8 +25,8 @@
     pkgs.callPackage ./pkgs/Adobe_Illustrator_CS6_appimage { };
   wechat_dev_tools_appimage =
     pkgs.callPackage ./pkgs/wechat_dev_tools_appimage { };
-  # escrcpy_bin =
-  #   pkgs.callPackage ./pkgs/escrcpy_bin { };
+  escrcpy_bin =
+    pkgs.callPackage ./pkgs/escrcpy_bin { };
   escrcpy_appimage =
     pkgs.callPackage ./pkgs/escrcpy_appimage { };
   wechat_dev_tools_bin = pkgs.callPackage ./pkgs/wechat_dev_tools_bin { };
@@ -34,17 +34,17 @@
   waybar_bluetooth_battery_parse =
     pkgs.callPackage ./pkgs/waybar_bluetooth_battery_parse { };
   llqqnt =
-    pkgs.callPackage ./pkgs/llqqnt {};
+    pkgs.callPackage ./pkgs/llqqnt { };
   CrossOver = pkgs.callPackage ./pkgs/CrossOver {
     iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport =
       true;
   };
-  fhs = pkgs.callPackage ./pkgs/fhs {};
+  fhs = pkgs.callPackage ./pkgs/fhs { };
   # Usage:
   # nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida
-  xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida {};
-  MIO_KITCHEN_bin = pkgs.callPackage ./pkgs/MIO_KITCHEN_bin {};
-  XiaoMiToolV2 = pkgs.callPackage ./pkgs/XiaoMiToolV2 {};
+  xcursor-genshin-nahida = pkgs.callPackage ./pkgs/xcursor-genshin-nahida { };
+  MIO_KITCHEN_bin = pkgs.callPackage ./pkgs/MIO_KITCHEN_bin { };
+  XiaoMiToolV2 = pkgs.callPackage ./pkgs/XiaoMiToolV2 { };
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   wechat-universal-bwrap = pkgs.callPackage ./pkgs/wechat-universal-bwrap { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
