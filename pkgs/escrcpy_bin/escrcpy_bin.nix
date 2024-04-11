@@ -4,10 +4,7 @@
 , autoPatchelfHook
 , makeWrapper
 , dpkg
-, vulkan-loader
 , libGL
-, gnirehtet
-, android-tools
 , at-spi2-core
 , xorg
 , gtk3
@@ -74,16 +71,6 @@ stdenv.mkDerivation rec {
     makeWrapper $out/opt/Escrcpy/escrcpy $out/bin/escrcpy \
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ libGL ]}" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
-    #rm $out/opt/Escrcpy/libvulkan.so.1
-    #rm $out/opt/Escrcpy/libEGL.so
-    #rm $out/opt/Escrcpy/resources/extra/linux/gnirehtet
-    #rm -rf $out/opt/Escrcpy/resources/extra/linux/android-platform-tools/{adb,fastboot,make_f2fs,make_f2fs_casefold}
-    #ln -s ${gnirehtet}/bin/gnirehtet $out/opt/Escrcpy/resources/extra/linux/gnirehtet
-    #ln -s ${vulkan-loader}/lib/libvulkan.so.1 $out/opt/Escrcpy/libvulkan.so.1
-    #ln -s ${android-tools}/bin/adb $out/opt/Escrcpy/resources/extra/linux/android-platform-tools/adb
-    #ln -s ${android-tools}/bin/fastboot $out/opt/Escrcpy/resources/extra/linux/android-platform-tools/fastboot
-    #ln -s ${android-tools}/bin/make_f2fs $out/opt/Escrcpy/resources/extra/linux/android-platform-tools/make_f2fs
-    #ln -s ${android-tools}/bin/make_f2fs $out/opt/Escrcpy/resources/extra/linux/android-platform-tools/make_f2fs
     }
     _install
     runHook postInstall
