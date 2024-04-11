@@ -1,1 +1,1 @@
-import ./xcursor-genshin-nahida.nix
+import ./end_4-dots_hyprland.nix
