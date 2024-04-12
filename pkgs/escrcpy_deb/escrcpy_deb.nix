@@ -83,5 +83,6 @@ stdenv.mkDerivation rec {
     platforms = [ "x86_64-linux" "aarch64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     # maintainers = with maintainers; [ Program-Learning ];
+    broken = true;
   };
 }
