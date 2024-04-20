@@ -46,7 +46,6 @@
   MIO_KITCHEN_bin = pkgs.callPackage ./pkgs/MIO_KITCHEN_bin { };
   XiaoMiToolV2 = pkgs.callPackage ./pkgs/XiaoMiToolV2 { };
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
-  wechat-universal-bwrap = pkgs.callPackage ./pkgs/wechat-universal-bwrap { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
   AppimageLauncher_deb = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
