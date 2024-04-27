@@ -1,5 +1,9 @@
 #https://github.com/Prismwork/llqqnt-nix/blob/trunk/pkgs/llqqnt.nix
-{pkgs, ...}: let
+{
+  pkgs,
+  commandLineArgs ? "",
+  ...
+}: let
   LiteLoaderQQNT_VERSION = "1.1.1";
   LiteLoaderQQNT_REV = "6f1972d2bc83fe1a1d26e82a49ee15d8cc079018";
   LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
@@ -25,7 +29,11 @@
           })
     );
 in
-  pkgs.qq.overrideAttrs (oldAttrs @ {
+  (pkgs.qq.override {
+    # can not work and i have no idea
+    # inherit commandLineArgs;
+  })
+  .overrideAttrs (oldAttrs @ {
     nativeBuildInputs ? [],
     version,
     ...
