@@ -47,6 +47,7 @@
   XiaoMiToolV2 = pkgs.callPackage ./pkgs/XiaoMiToolV2 { };
   watt-toolkit_2 = pkgs.callPackage ./pkgs/watt-toolkit_2 { };
   clang_dev_env_fhs = pkgs.callPackage ./pkgs/clang_dev_env_fhs { };
+  cudatoolkit_dev_env_fhs = pkgs.callPackage ./pkgs/cudatoolkit_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
   AppimageLauncher_deb = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
   #AppimageLauncher_git = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_git { };
