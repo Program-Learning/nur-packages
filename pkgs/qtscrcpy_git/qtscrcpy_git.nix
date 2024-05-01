@@ -6,6 +6,7 @@
   qttools,
   qtx11extras,
   ffmpeg,
+  openssh,
   wrapQtAppsHook,
   copyDesktopItems,
   android-tools,
@@ -25,7 +26,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [cmake pkg-config wrapQtAppsHook copyDesktopItems];
+  nativeBuildInputs = [cmake openssh pkg-config wrapQtAppsHook copyDesktopItems];
   buildInputs = [qttools qtx11extras ffmpeg];
 
   postPatch = ''
@@ -60,8 +61,8 @@ stdenv.mkDerivation rec {
     license = licenses.asl20;
     # maintainers = with maintainers; [ Program-Learning ];
     platforms = platforms.linux;
+    # https://github.com/NixOS/nixpkgs/issues/195117
     broken = true;
   };
 }
 # https://github.com/NixOS/nixpkgs/commit/d896f0d8e02d3a251e595761807eb9656a221685
-
