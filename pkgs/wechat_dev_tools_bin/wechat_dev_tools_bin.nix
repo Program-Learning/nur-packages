@@ -8,7 +8,7 @@
 }: let
   package_nane = "wechat_dev_tools";
   package_type = "bin";
-  package_version = "1.06.2310080-2";
+  package_version = "1.06.2402040-1";
   github_release_tag = "v${package_version}";
   github_url = "https://github.com/msojocs/wechat-web-devtools-linux";
   package_description = "The development tools for wechat projects";
@@ -19,7 +19,7 @@ in
 
     src = fetchzip {
       url = "${github_url}/releases/download/${github_release_tag}/WeChat_Dev_Tools_${github_release_tag}_x86_64_linux.tar.gz";
-      sha256 = "sha256-qhOQN1SGR8eCY1wX35zARXdHwGIODs+ZsppT7SenYRE=";
+      sha256 = "sha256-PU/1fyyDB3Q7W+BzOa58nd9lEtb8F95vJ5RkHcmL0IY=";
     };
     icon = fetchurl {
       url = "https://github.com/Program-Learning/nur-packages/releases/download/v1.06.2307260-1_wechat_dev_tool_appimage/wechat-devtools.png";
