@@ -35,6 +35,7 @@ in
   })
   .overrideAttrs (oldAttrs @ {
     nativeBuildInputs ? [],
+    installPhase,
     version,
     ...
   }: {
@@ -43,6 +44,7 @@ in
       ++ [
         fhs
       ];
+    installPhase = builtins.replaceStrings ["--enable-features=WaylandWindowDecorations"] ["--enable-features=WaylandWindowDecorations --enable-wayland-ime"] installPhase;
     postInstall = ''
       # Patch QQ
       sed -i "1s@^@require(String.raw\`${LiteLoaderQQNT_SRC}\`);\n@" $out/opt/QQ/resources/app/app_launcher/index.js
