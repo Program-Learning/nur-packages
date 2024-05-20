@@ -44,7 +44,21 @@ in
       ++ [
         fhs
       ];
-    installPhase = builtins.replaceStrings ["--enable-features=WaylandWindowDecorations"] ["--enable-features=WaylandWindowDecorations --enable-wayland-ime"] installPhase;
+    installPhase =
+      builtins.replaceStrings [
+        ''
+          makeShellWrapper $out/opt/QQ/qq $out/bin/qq \
+        ''
+        "--enable-features=WaylandWindowDecorations"
+      ] [
+        ''
+          makeShellWrapper $out/opt/QQ/qq $out/bin/qq \
+            --prefix LITELOADERQQNT_PROFILE_TEST : ''${XDG_DATA_HOME:-~/.local/share}/LLQQNT \
+            --prefix LITELOADERQQNT_PROFILE_TEST2 : ~/.local/share/LLQQNT \
+        ''
+        "--enable-features=WaylandWindowDecorations --enable-wayland-ime"
+      ]
+      installPhase;
     postInstall = ''
       # Patch QQ
       sed -i "1s@^@require(String.raw\`${LiteLoaderQQNT_SRC}\`);\n@" $out/opt/QQ/resources/app/app_launcher/index.js
