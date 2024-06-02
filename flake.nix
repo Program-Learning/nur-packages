@@ -1,7 +1,11 @@
 {
   description = "My personal NUR repository";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-  outputs = { self, nixpkgs }:
+  inputs.LaphaeLaicmd-linux = {
+      url = "github:DataEraserC/LaphaeLaicmd-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -16,6 +20,8 @@
     {
       legacyPackages = forAllSystems (system: import ./default.nix {
         pkgs = import nixpkgs { inherit system; };
+        inherit system;
+        inherit inputs;
       });
       packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
       formatter = forAllSystems (
