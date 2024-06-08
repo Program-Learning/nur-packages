@@ -1,8 +1,8 @@
 {
   description = "My personal NUR repository";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-  inputs.LaphaeLaicmd-linux = {
-      url = "github:DataEraserC/LaphaeLaicmd-linux";
+  inputs.LaphaeL-aicmd = {
+      url = "github:DataEraserC/LaphaeL-aicmd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   outputs = inputs@{ self, nixpkgs, ... }:

@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "LaphaeLaicmd-linux": {
+    "LaphaeL-aicmd": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -9,16 +9,16 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1716888077,
-        "narHash": "sha256-1IHarOLvgqDoKo7WKEnOK+PUBzBeDeBb9MqkNkqegq4=",
+        "lastModified": 1717835998,
+        "narHash": "sha256-TIIHbSmDiimWhwlqRZnqlMjkMxstrqbLjTsEsJQdaxo=",
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
-        "rev": "e082503f0e5bbb4f33f67068579e5a97bcfafd54",
+        "repo": "LaphaeL-aicmd",
+        "rev": "d767381911376d1436c69d7297b125dd984bfb32",
         "type": "github"
       },
       "original": {
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
+        "repo": "LaphaeL-aicmd",
         "type": "github"
       }
     },
@@ -61,7 +61,7 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -101,7 +101,7 @@
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "nixpkgs"
         ],
         "systems": "systems_3",
@@ -123,7 +123,7 @@
     },
     "root": {
       "inputs": {
-        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux",
+        "LaphaeL-aicmd": "LaphaeL-aicmd",
         "nixpkgs": "nixpkgs"
       }
     },
@@ -174,7 +174,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]

@@ -50,7 +50,7 @@
   cudatoolkit_dev_env_fhs = pkgs.callPackage ./pkgs/cudatoolkit_dev_env_fhs { };
   clang_dev_env = pkgs.callPackage ./pkgs/clang_dev_env { };
   vmware-workstation= pkgs.callPackage ./pkgs/vmware-workstation { };
-  LaphaeLaicmd-linux = inputs.LaphaeLaicmd-linux.packages.${system}.laphaelaicmd_linux;
+  LaphaeL-aicmd = inputs.LaphaeL-aicmd.packages.${system}.laphael_aicmd;
   AppimageLauncher_deb = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_deb { };
   #AppimageLauncher_git = pkgs.libsForQt5.callPackage ./pkgs/AppimageLauncher_git { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
