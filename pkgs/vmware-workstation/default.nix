@@ -420,5 +420,6 @@ in
       license = licenses.unfree;
       platforms = ["x86_64-linux"];
       maintainers = with maintainers; [cawilliamson deinferno vifino];
+      broken = true;
     };
   }
