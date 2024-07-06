@@ -1,5 +1,11 @@
 #https://github.com/Prismwork/llqqnt-nix/blob/trunk/pkgs/llqqnt.nix
-{ pkgs, appimageTools, buildFHSUserEnv, pkg-config, qq, ... }:
+{
+  appimageTools,
+  buildFHSUserEnv,
+  pkg-config,
+  qq,
+  ...
+}:
 let
   LiteLoaderQQNT_REV = "af1d19abd92d11f2d0316a940592593f3b254705";
   LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
