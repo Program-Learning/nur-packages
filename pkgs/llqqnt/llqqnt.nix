@@ -7,7 +7,7 @@
   ...
 }:
 let
-  LiteLoaderQQNT_REV = "af1d19abd92d11f2d0316a940592593f3b254705";
+  LiteLoaderQQNT_REV = "5fa38998a4b2441cd8ffd17221ca1a99929555a1";
   LiteLoaderQQNT_URL = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
   LiteLoaderQQNT_SRC = fetchGit {
     url = LiteLoaderQQNT_URL;
