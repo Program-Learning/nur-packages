@@ -1,4 +1,4 @@
-# nur-packages-template
+# nur-packages-template(Migrate to https://github.com/DataEraserC/nur-packages)
 
 **A template for [NUR](https://github.com/nix-community/NUR) repositories**
 
